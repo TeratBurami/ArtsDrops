@@ -1,0 +1,27 @@
+button{
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.submit{
+    background: #4A51FF;
+    color:white;
+}
+
+.submit:hover{
+    background: white;
+    border: #4A51FF solid 1px;
+}
+
+.normal{
+    background: none;
+    color:black;
+    border: 1px solid black;
+}
+
+/* .normal:hover{
+    background: rgb(220, 220, 220);
+} */
