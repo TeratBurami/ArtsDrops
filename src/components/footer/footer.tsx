@@ -43,6 +43,7 @@ export default function Footer() {
                     <li><img className="w-3 text-white" src={Pinterest} alt="" /></li>
                 </ul>
             </div>
+            <h1>Test Update</h1>
         </div>
     )
 }
