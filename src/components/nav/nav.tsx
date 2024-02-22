@@ -12,12 +12,12 @@ export default function Nav() {
         <div>
             <div className="container-2xl border-solid border-b border-black mb-3 pb-3 ">
                 <div className="flex flex-row">
-                    <div className="website-logo-name flex ml-5 mt-3">
+                    <div className="website-logo-name flex ml-5 mt-3 w-full">
                         <img src={Icon} alt="" className='w-10 mt-2'/>
                         {/* <div className="logo w-12 h-12 bg-black rounded-full"></div> */}
                         <h1 className="name text-2xl ml-5 mt-2 font-bold">ArtsDrops</h1>
                     </div>
-                    <div className="mr-5 search-signup-login flex container justify-end mt-4">
+                    <div className="search-signup-login flex container justify-end mt-4">
                         <Search></Search>
                         {/* <div className="search h-8 mr-14 w-80 border-solid border-black border rounded-full"></div> */}
                         <Button value='Sign up' className='normal h-8 ml-20 mr-3 text-xs font-bold'></Button>
