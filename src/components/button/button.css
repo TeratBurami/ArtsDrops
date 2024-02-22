@@ -13,6 +13,7 @@ button{
 
 .submit:hover{
     background: white;
+    color:#4A51FF;
     border: #4A51FF solid 1px;
 }
 
