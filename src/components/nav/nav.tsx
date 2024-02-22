@@ -26,8 +26,8 @@ export default function Nav() {
             <div className="w-3/4 h-px bg-slate-400 mt-5 ml-5"></div>
             <div className="navbutton container w-1/2 ml-8 mt-4 text-sm">
                 <ul className='flex flex-row justify-evenly'>
-                    <NavLink to='/' className={location.pathname === "/" ? "cursor-pointer rounded-full p-2 font-bold bg-[#555555] text-white" : "cursor-pointer p-2 font-bold"} id='home'>Home</NavLink>
-                    <NavLink to='/artists' className={location.pathname === "/artists" ? "cursor-pointer rounded-full p-2 font-bold bg-[#555555] text-white" : "cursor-pointer p-2 font-bold "} id='artists'>Artists</NavLink>
+                    <Link to='/' className={location.pathname === "/" ? "cursor-pointer rounded-full p-2 font-bold bg-[#555555] text-white" : "cursor-pointer p-2 font-bold"} id='home'>Home</Link>
+                    <Link to='/artists' className={location.pathname === "/artists" ? "cursor-pointer rounded-full p-2 font-bold bg-[#555555] text-white" : "cursor-pointer p-2 font-bold "} id='artists'>Artists</Link>
                     <Link to='/art_toys' className={location.pathname === "/art_toys" ? "cursor-pointer rounded-full p-2 font-bold bg-[#555555] text-white" : "cursor-pointer p-2 font-bold "} id='arttoys'>Art Toys</Link>
                     <Link to='/gallery' className={location.pathname === "/gallery" ? "cursor-pointer rounded-full p-2 font-bold bg-[#555555] text-white" : "cursor-pointer p-2 font-bold "} id='gallery'>Gallery</Link>
                     <Link to='/about_us' className={location.pathname === "/about_us" ? "cursor-pointer rounded-full p-2 font-bold bg-[#555555] text-white" : "cursor-pointer p-2 font-bold "} id='aboutus'>About Us</Link>
