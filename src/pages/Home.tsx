@@ -3,7 +3,8 @@ import Button from "../components/button/button";
 import Footer from "../components/footer/footer";
 import Slide from "../components/slide-image";
 import Card from "../components/card";
-import './Home.css'
+import ArtToy from '../assets/images/art_toy.svg';
+import Clock from '../components/Clock/clock';
 
 export default function Home() {
   return (
@@ -26,10 +27,10 @@ export default function Home() {
       </div>
 
       <div className="popularArtist">
-        <h1 className="text-[30px] font-semibold text-center mb-3">
+        <h1 className="text-[30px] font-semibold text-center mb-3 w-fit mx-auto">
           Popular Artists
         </h1>
-        <div className="con bg-slate-200 pt-16 grid grid-cols-5 pb-20 px-40 border-t border-b border-slate-400">
+        <div className="con bg-slate-200 pt-16 flex flex-cols pb-20 border-t border-b border-slate-400">
           <Card url="https://i.pinimg.com/564x/3c/af/22/3caf22a16f6687993eb283ca969488b3.jpg"></Card>
           <Card url="https://i.pinimg.com/564x/b5/88/10/b58810fcf4e720986be187497e698056.jpg"></Card>
           <Card url="https://i.pinimg.com/564x/9e/50/c3/9e50c35ea61d942ec28bc9c765e80f5c.jpg"></Card>
@@ -51,11 +52,9 @@ export default function Home() {
               20% off
             </span>
           </div>
-          <div className="clock p-4 shadow-inner w-fit rounded-full shadow-slate-400 mx-auto">
-            <h1 className="text-[#FE0000] text-[35px] font-bold" id="time">03:26:38</h1>
-          </div>
+          <Clock></Clock>
         </div>
-        <div className="arts w-5/6 grid grid-cols-2 gap-20 border-l border-slate-400 pl-40">
+        <div className="arts w-5/6 grid grid-cols-2 gap-[10px] border-l border-slate-400 pl-[30px]">
             <div className="img w-3/4">
                 <img src="https://i.pinimg.com/736x/46/07/44/46074402e28fb6637d1f0f7ed11676e2.jpg" alt="" className="p-3 shadow-md shadow-slate-400 mb-3"/>
                 <div className="mx-auto w-fit"><span className="font-semibold text-xs"><s>5000</s></span><span className="text-[#FE0000] font-light text-[8px]"> THB</span></div>
@@ -90,6 +89,13 @@ export default function Home() {
             </div>
         </div>
       </div>
+      <div className="arttoyCon pt-10 pb-24 bg-[url('/src/assets/images/art_toy_bg.svg')]">
+        <div className="imgCon pt-20 w-fit mx-auto"><img src={ArtToy} alt="" className=" mx-auto w-2/3 drop-shadow-[5px_20px_20px_rgba(0,0,0,0.4)]"/></div>
+        <div className="textCon w-1/2 mx-auto mt-10 shadow-inner shadow-slate-600 p-5">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit minus nihil consequatur quidem excepturi, mollitia sed. Commodi rem, inventore suscipit nesciunt quas tempora eos in perferendis temporibus accusantium maxime voluptatibus.</p>
+        </div>
+      </div>
+      
 
       <Footer></Footer>
     </>

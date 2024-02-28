@@ -8,7 +8,7 @@ export default function Card({url='https://i.pinimg.com/474x/65/a1/9d/65a19d8514
   return (
     <div className="card w-fit mx-auto rounded-lg shadow-lg shadow-slate-500 bg-white scale-75 hover:scale-100 transition ease-in delay-200">
       {/* <img src="https://i.pinimg.com/474x/65/a1/9d/65a19d851442d5816097cadbae1c34fa.jpg" alt="" className='w-50'/>     */}
-      <div className="img w-[300px] h-[300px] mx-auto mb-6">
+      <div className="img w-auto h-[300px] mx-auto mb-6">
         <img
           src={url}
           alt=""
