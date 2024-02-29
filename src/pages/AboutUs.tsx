@@ -19,10 +19,10 @@ export default function AboutUs() {
                 </li>
 
                 {/*Line*/}
-                <li className='text-center'><hr className='m-10 ml-96 mr-96'/></li>
+                <li className='text-center'><hr className='m-10 ml-80 mr-80 bg-gray-300 h-0.5'/></li>
 
                 <li>
-                    <div className="flex w-fit mx-auto itmes-center">
+                    <div className="flex w-fit mx-auto items-center">
                         <div className='w-[1000px] h-[200px] shadow-md p-3 flex items-center justify-center'>
                             <p className='font-semibold'>"In this Part, It will be replace by some random quotes"
                                 <h2 className='font-light mt-1 text-right'>- Pathompum Jirakarpaisan</h2>
@@ -33,7 +33,7 @@ export default function AboutUs() {
                 </li>
 
                 {/*Line*/}
-                <li className='text-center'> <hr className='m-10 ml-96 mr-96'/> </li>
+                <li className='text-center'> <hr className='m-10 ml-80 mr-80 bg-gray-300 h-0.5'/> </li>
 
                 <li>
                     <div className="flex w-fit mx-auto items-center">
@@ -47,7 +47,7 @@ export default function AboutUs() {
                 </li>
                 
                 {/*Line*/}
-                <li className='text-center'> <hr className='m-10 ml-96 mr-96'/> </li>
+                <li className='text-center'> <hr className='m-10 ml-80 mr-80 bg-gray-300 h-0.5'/> </li>
 
                 <li>
                     <div className="flex w-fit mx-auto items-center">
@@ -61,7 +61,7 @@ export default function AboutUs() {
                 </li>
 
                 {/*Line*/}
-                <li className='text-center'> <hr className='m-10 ml-96 mr-96'/> </li>
+                <li className='text-center'> <hr className='m-10 ml-80 mr-80 bg-gray-300 h-0.5'/> </li>
 
                 <li>
                     <div className="flex w-fit mx-auto items-center">
