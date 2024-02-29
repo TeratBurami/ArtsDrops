@@ -9,11 +9,11 @@ export default function Artists() {
             <Nav></Nav>
             
             <div className='flex mx-auto w-fit'>
-                <img src="https://i.pinimg.com/736x/46/07/44/46074402e28fb6637d1f0f7ed11676e2.jpg" alt="" className="p-3 shadow-md shadow-slate-400 mb-3 w-96"/>
+                <img src="https://cdn.britannica.com/52/134252-050-645431E5/Pablo-Picasso-1950.jpg" alt="" className="p-3 shadow-md shadow-slate-400 mb-3 w-96"/>
                 <div className='flex justify-center items-center ml-10'>
                     <p className='font-semibold text-center'>
                         <div className='w-[1000px]'>
-                        “The purpose of art is washing the dust of daily life off our souls.”
+                        “Learn the rules like a pro, so you can break them like an artist.”
                         </div>
                         <p className='font-light'>- Pablo Picasso -</p>
                     </p>
