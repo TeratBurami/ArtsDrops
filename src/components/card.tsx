@@ -13,7 +13,7 @@ export default function Card({url='https://i.pinimg.com/474x/65/a1/9d/65a19d8514
         <img
           src={url}
           alt=""
-          className="mx-auto rounded-lg object-cover w-[300px] h-[300px] rounded-b-none"
+          className="mx-auto rounded-lg object-cover w-full h-[300px] rounded-b-none"
         />
       </div>
       <div className="info flex flex-col h-[300px]">
