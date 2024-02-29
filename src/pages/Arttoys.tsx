@@ -5,6 +5,7 @@ export default function Arttoys(){
         <>
             <Nav></Nav>
             <h1>Art toys</h1>
+
         </>
     )
 }

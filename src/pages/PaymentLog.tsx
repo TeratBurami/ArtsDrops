@@ -1,5 +1,13 @@
+import Nav from '../components/admin/nav'
+
 export default function PaymentLog(){
     return(
-        <h1>Payment Log</h1>
+        <div className='absolute'>
+            <Nav></Nav>
+
+            <p>
+            STHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+            </p>
+        </div>
     )
 }

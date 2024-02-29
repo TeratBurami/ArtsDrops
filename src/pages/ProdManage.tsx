@@ -1,5 +1,12 @@
+import Nav from '../components/admin/nav'
+
 export default function ProdManage(){
     return(
-        <h1>Product Management</h1>
+        <div className='relative'>
+                <Nav></Nav>
+        <p>
+            STHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+        </p>
+        </div>
     )
 }
