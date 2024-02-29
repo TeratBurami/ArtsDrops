@@ -1,5 +1,7 @@
+import Nav from '../components/admin/nav'
+
 export default function AccountManage(){
     return(
-        <h1>Account Management</h1>
+        <Nav></Nav>
     )
 }

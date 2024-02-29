@@ -43,7 +43,7 @@ export default function AboutUs() {
                     <div className="flex w-fit mx-auto items-center">
                         <img src={Guy} alt="" className="mr-40 p-3 shadow-md shadow-slate-400 mb-3 w-60"/>
                         <div className='w-[1000px] h-[200px] shadow-md p-3 flex items-center justify-center'>
-                            <p className='font-semibold'>"Im clueless why im here"
+                            <p className='font-semibold'>"It’s not what you look at that matters, it’s what you see."
                                 <h2 className='font-light mt-1 text-right'>- Patsawat Kittipunthopast</h2>
                             </p>
                         </div>    
