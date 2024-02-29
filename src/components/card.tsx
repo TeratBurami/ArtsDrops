@@ -2,9 +2,10 @@ import Button from "../components/button/button";
 
 interface Props{
     url?:string;
+    route?:string;
 }
 
-export default function Card({url='https://i.pinimg.com/474x/65/a1/9d/65a19d851442d5816097cadbae1c34fa.jpg'}:Props) {
+export default function Card({url='https://i.pinimg.com/474x/65/a1/9d/65a19d851442d5816097cadbae1c34fa.jpg',route:route}:Props) {
   return (
     <div className="card w-fit mx-auto rounded-lg shadow-lg shadow-slate-500 bg-white scale-75 hover:scale-100 transition ease-in delay-200">
       {/* <img src="https://i.pinimg.com/474x/65/a1/9d/65a19d851442d5816097cadbae1c34fa.jpg" alt="" className='w-50'/>     */}
@@ -21,6 +22,7 @@ export default function Card({url='https://i.pinimg.com/474x/65/a1/9d/65a19d8514
         <Button
           value="More Details"
           className="submit mx-auto font-semibold h-8 w-3/4 mb-5"
+          route={route}
         ></Button>
       </div>
     </div>
