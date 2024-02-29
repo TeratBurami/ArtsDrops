@@ -21,7 +21,8 @@ export default function Home() {
           </p>
           <Button
             value="More"
-            className="normal font-semibold h-10 mx-auto"
+            className="hover:bg-slate-200 normal font-semibold h-10 mx-auto"
+            route="gallery"
           ></Button>
         </div>
       </div>
@@ -31,11 +32,11 @@ export default function Home() {
           Popular Artists
         </h1>
         <div className="con bg-slate-200 pt-16 flex flex-cols pb-20 border-t border-b border-slate-400">
-          <Card url="https://i.pinimg.com/564x/3c/af/22/3caf22a16f6687993eb283ca969488b3.jpg"></Card>
-          <Card url="https://i.pinimg.com/564x/b5/88/10/b58810fcf4e720986be187497e698056.jpg"></Card>
-          <Card url="https://i.pinimg.com/564x/9e/50/c3/9e50c35ea61d942ec28bc9c765e80f5c.jpg"></Card>
-          <Card url="https://i.pinimg.com/564x/49/9b/67/499b67ba47061c414c0bf82b7586917f.jpg"></Card>
-          <Card></Card>
+          <Card route="artists" url="https://i.pinimg.com/564x/3c/af/22/3caf22a16f6687993eb283ca969488b3.jpg"></Card>
+          <Card route="artists" url="https://i.pinimg.com/564x/b5/88/10/b58810fcf4e720986be187497e698056.jpg"></Card>
+          <Card route="artists" url="https://i.pinimg.com/564x/9e/50/c3/9e50c35ea61d942ec28bc9c765e80f5c.jpg"></Card>
+          <Card route="artists" url="https://i.pinimg.com/564x/49/9b/67/499b67ba47061c414c0bf82b7586917f.jpg"></Card>
+          <Card route="artists"></Card>
         </div>
       </div>
 
@@ -52,7 +53,10 @@ export default function Home() {
               20% off
             </span>
           </div>
-          <Clock></Clock>
+          <div className="clockPart">
+            <h1 className="text-center font-semibold text-4xl text-[#FE0000] mb-5">Expire in</h1>
+              <Clock></Clock>
+          </div>
         </div>
         <div className="arts w-5/6 grid grid-cols-2 gap-[10px] border-l border-slate-400 pl-[30px]">
             <div className="img w-3/4">
@@ -89,11 +93,12 @@ export default function Home() {
             </div>
         </div>
       </div>
-      <div className="arttoyCon pt-10 pb-24 bg-[url('/src/assets/images/art_toy_bg.svg')]">
+      <div className="arttoyCon pt-10 pb-16 bg-[url('/src/assets/images/art_toy_bg.svg')]">
         <div className="imgCon pt-20 w-fit mx-auto"><img src={ArtToy} alt="" className=" mx-auto w-2/3 drop-shadow-[5px_20px_20px_rgba(0,0,0,0.4)]"/></div>
         <div className="textCon w-1/2 mx-auto mt-10 shadow-inner shadow-slate-600 p-5">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit minus nihil consequatur quidem excepturi, mollitia sed. Commodi rem, inventore suscipit nesciunt quas tempora eos in perferendis temporibus accusantium maxime voluptatibus.</p>
         </div>
+            <div className="buttonCon mx-auto w-fit mt-10"><Button route="art_toys" className="normal mx-auto w-96 hover:bg-slate-200" value="Explore"></Button></div>
       </div>
       
 

@@ -9,7 +9,6 @@ const timeCount=()=>{
     let min=tomorrow.getMinutes()-now.getMinutes();
     let sec=tomorrow.getSeconds()-now.getSeconds();
     let result=`${String(hour).padStart(2, '0')}:${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
-    console.log(result);
     
     return result;
 }
