@@ -1,4 +1,4 @@
-import icon from '../../assets/images/magnifying-glass-solid.svg'
+import icon from '../assets/images/magnifying-glass-solid.svg'
 
 interface Props{
     className?:string;

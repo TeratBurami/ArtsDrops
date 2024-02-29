@@ -1,7 +1,7 @@
 import Nav from '../components/nav/nav';
-import Search from '../components/search-bar/search';
+import Search from '../components/search';
 import Button from '../components/button/button';
-import Footer from '../components/footer/footer'; 
+import Footer from '../components/footer'; 
 
 export default function Artists() {
     return (

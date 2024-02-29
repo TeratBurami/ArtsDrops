@@ -1,5 +1,5 @@
 import Nav from '../components/nav/nav';
-import Footer from '../components/footer/footer'
+import Footer from '../components/footer'
 import Phoom from '../assets/images/Phoom.png'
 import Sea from '../assets/images/Sea.jpg'
 import Guy from '../assets/images/guy.png'
