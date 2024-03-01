@@ -4,9 +4,6 @@ export default function ProdManage(){
     return(
         <div className='relative'>
                 <Nav></Nav>
-        <p>
-            STHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
-        </p>
         </div>
     )
 }
