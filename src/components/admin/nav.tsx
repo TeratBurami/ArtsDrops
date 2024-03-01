@@ -15,7 +15,7 @@ export default function Nav(){
                         'hover:bg-gray-100 rounded-md p-6 w-40 text-center'
                     }>  Product Management  </Link>
 
-                    <hr className='m-6 w-40 bg-black h-0.5'/>
+                    <hr className='m-2 w-40 bg-black h-0.5'/>
 
                     <Link to='/acc_manage' className={
                         location.pathname === '/acc_manage' ? 
@@ -23,7 +23,7 @@ export default function Nav(){
                         'hover:bg-gray-100 rounded-md p-6 w-40 text-center'
                     }>  Account Management  </Link>
 
-                    <hr className='m-6 w-40 bg-black h-0.5'/>
+                    <hr className='m-2 w-40 bg-black h-0.5'/>
 
                     <Link to='/payment_log' className={
                         location.pathname === '/payment_log' ?
@@ -31,7 +31,7 @@ export default function Nav(){
                         'hover:bg-gray-100 rounded-md p-6 w-40 text-center'
                     }>  Payment Log</Link>
 
-                    <hr className='m-6 w-40 bg-black h-0.5'/>
+                    <hr className='m-2 w-40 bg-black h-0.5'/>
 
                     
                 </div>
