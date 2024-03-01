@@ -4,7 +4,7 @@ import Artists from './pages/Artists';
 import ArtToys from './pages/Arttoys';
 import Gallery from './pages/Gallery';
 import AboutUs from './pages/AboutUs';
-import ProdManage from './pages/ProdManage';
+import ProdManage from './pages/ProdManage/ProdManage';
 import AccountManage from './pages/AccountManage';
 import PaymentLog from './pages/PaymentLog';
 
