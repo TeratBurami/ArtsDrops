@@ -1,5 +1,3 @@
-import Button from './components/button/button';
-import Nav from './components/nav/nav';
 import {Route,Routes,BrowserRouter as Router} from 'react-router-dom';
 import Home from './pages/Home';
 import Artists from './pages/Artists';

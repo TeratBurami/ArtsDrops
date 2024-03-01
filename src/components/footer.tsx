@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import Facebook from '../../assets/images/facebook.svg';
-import Pinterest from '../../assets/images/square-pinterest.svg';
-import LinkedIn from '../../assets/images/linkedin.svg';
-import Instagram from '../../assets/images/instagram.svg';
-import Youtube from '../../assets/images/youtube.svg';
-import X from '../../assets/images/x-twitter.svg';
-import Icon from '../../assets/images/palette-solid-white.svg';
+import Facebook from '../assets/images/facebook.svg';
+import Pinterest from '../assets/images/square-pinterest.svg';
+import LinkedIn from '../assets/images/linkedin.svg';
+import Instagram from '../assets/images/instagram.svg';
+import Youtube from '../assets/images/youtube.svg';
+import X from '../assets/images/x-twitter.svg';
+import Icon from '../assets/images/magnifying-glass-solid.svg';
 
 export default function Footer() {
     return (

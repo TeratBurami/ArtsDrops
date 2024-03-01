@@ -1,6 +1,6 @@
 import Nav from "../components/nav/nav";
 import Button from "../components/button/button";
-import Footer from "../components/footer/footer";
+import Footer from "../components/footer";
 import Slide from "../components/slide-image";
 import Card from "../components/card";
 import ArtToy from '../assets/images/art_toy.svg';
