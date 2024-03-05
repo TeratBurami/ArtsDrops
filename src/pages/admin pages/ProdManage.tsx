@@ -1,6 +1,6 @@
 import Nav from '../../components/admin/nav'
 import Search from '../../components/search'
-import '../ProdManage/ProdManage.css'
+import './table.css'
 import Edit from '../../assets/images/pen-to-square-solid.svg'
 import Trash from '../../assets/images/trash-can-regular.svg'
 
@@ -9,12 +9,12 @@ export default function ProdManage(){
         <div>
             <Nav></Nav>
 
-            <div className='ml-60 mt-10 mr-6'>
-                <h1 className='text-2xl font-semibold'>
-                    Product Management
-                </h1>
-                <div className='bg-gray-200 h-10 flex justify-end'>
-                    <Search></Search>
+            <div className='ml-60 mr-6 p-10'>
+                <h1 className='text-2xl font-semibold pb-4'>Product Management</h1>
+                <div className='bg-gray-200 h-14 flex justify-end items-center'>
+                    <div className='mr-2'>
+                        <Search></Search>
+                    </div>
                 </div>
                 <table>
                     <tr>

@@ -4,9 +4,9 @@ import Artists from './pages/Artists';
 import ArtToys from './pages/Arttoys';
 import Gallery from './pages/Gallery';
 import AboutUs from './pages/AboutUs';
-import ProdManage from './pages/ProdManage/ProdManage';
-import AccountManage from './pages/AccountManage';
-import PaymentLog from './pages/PaymentLog';
+import ProdManage from './pages/admin pages/ProdManage';
+import AccountManage from './pages/admin pages/AccountManage';
+import PaymentLog from './pages/admin pages/PaymentLog';
 
 export default function App() {
   return (

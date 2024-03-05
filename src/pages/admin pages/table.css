@@ -5,6 +5,7 @@ table, td, tr, th {
 table {
     width: 100%;
 }
+
 th {
     background: gray;
     color: aliceblue;
