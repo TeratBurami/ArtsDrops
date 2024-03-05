@@ -7,8 +7,8 @@ export default function PaymentLog(){
         <>
             <Nav></Nav>
 
-            <div className='ml-60'>
-            <h1 className='font-semibold text-2xl pb-4'>Account Management</h1>
+            <div className='ml-60 mr-6 p-10'>
+            <h1 className='font-semibold text-2xl pb-4'>Payment Log</h1>
                 <div className='bg-gray-200 h-14 flex justify-end items-center'>
                     <div className='mr-2'>
                         <Search></Search>
@@ -16,10 +16,26 @@ export default function PaymentLog(){
                 </div>
                 <table>
                     <tr>
-                        <th></th>
-                        <th></th>
-
+                        <th className='w-1/12'>ID</th>
+                        <th className='w-4/12'>Artwork</th>
+                        <th className='w-1/12'>Customer ID</th>
+                        <th className='w-2/12'>Transaction ID</th>
+                        <th className='w-2/12'>Price</th>
+                        <th className='w-2/12'>Time</th>
                     </tr>
+
+                    {
+                        /*TESTER */
+                        <tr>
+                            <td>001</td>
+                            <td>Lorem Ipsum</td>
+                            <td>001</td>
+                            <td>0123456789</td>
+                            <td>100,000.00 THB</td>
+                            <td>14/2/2024 18:08</td>
+                        </tr>
+                    }
+
                 </table>
             </div>
         </>
