@@ -4,6 +4,7 @@ import './table.css'
 import Edit from '../../assets/images/user-pen-solid.svg'
 import Delete from '../../assets/images/user-minus-solid.svg'
 import AddUser from '../../assets/images/user-plus-solid.svg'
+import {Link} from 'react-router-dom'
 
 export default function AccountManage(){
     return(
@@ -37,8 +38,16 @@ export default function AccountManage(){
                             <td>flymoontotheme@gmail.com</td>
                             <td>099-999-9999</td>
                             <td>Admin</td>
-                            <td><img src={Edit} className='w-6'></img></td>
-                            <td><img src={Delete} className='w-6'></img></td>
+                            <td>
+                                <Link to=''>
+                                    <img src={Edit} className='w-6'></img>
+                                </Link>
+                            </td>
+                            <td>
+                                <Link to=''>
+                                    <img src={Delete} className='w-6'></img>
+                                </Link>
+                            </td>
                         </tr>
                     }
 

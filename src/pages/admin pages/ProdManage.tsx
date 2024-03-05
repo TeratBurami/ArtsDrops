@@ -4,6 +4,7 @@ import './table.css'
 import Edit from '../../assets/images/pen-to-square-solid.svg'
 import Trash from '../../assets/images/trash-can-regular.svg'
 import Cart from '../../assets/images/cart-plus-solid.svg'
+import {Link} from 'react-router-dom'
 
 export default function ProdManage(){
     return(
@@ -36,8 +37,16 @@ export default function ProdManage(){
                             <td>Arts</td>
                             <td>Giraffe</td>
                             <td>5000</td>
-                            <td><img src={Edit} className='w-6'></img></td>
-                            <td><img src={Trash} className='w-6'></img></td>
+                            <td>
+                                <Link to=''>
+                                    <img src={Edit} className='w-6'></img>
+                                </Link>
+                            </td>
+                            <td>
+                                <Link to=''>
+                                    <img src={Trash} className='w-6'></img>
+                                </Link>
+                            </td>
                         </tr>
                     }
                 </table>
