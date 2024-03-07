@@ -12,6 +12,7 @@ export default function AboutUs() {
             
             <ul className='mt-20 mb-20'>
                 <li>
+                    {/*รอรูป คุณบีม!!! */}
                     <div className="flex w-fit mx-auto items-center">
                         <img src={Sea} alt="" className="mr-40 p-3 shadow-md shadow-slate-400 mb-3 w-60"/>
                             <div className='w-[1000px] h-[200px] shadow-md p-3 flex items-center justify-center'>
