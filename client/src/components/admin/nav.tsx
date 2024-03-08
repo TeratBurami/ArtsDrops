@@ -11,24 +11,24 @@ export default function Nav(){
 
                     <Link to='/prod_manage' className={
                         location.pathname === '/prod_manage' ?
-                        'bg-gray-200 rounded-md p-6 w-40 text-center':
-                        'hover:bg-gray-100 rounded-md p-6 w-40 text-center'
+                        'bg-gray-200 rounded-md p-6 w-50 text-center':
+                        'hover:bg-gray-100 rounded-md p-6 w-50 text-center'
                     }>  Product Management  </Link>
 
                     <hr className='m-2 w-40 bg-black h-0.5'/>
 
                     <Link to='/acc_manage' className={
                         location.pathname === '/acc_manage' ? 
-                        'bg-gray-200 rounded-md p-6 w-40 text-center':
-                        'hover:bg-gray-100 rounded-md p-6 w-40 text-center'
+                        'bg-gray-200 rounded-md p-6 w-50 text-center':
+                        'hover:bg-gray-100 rounded-md p-6 w-50 text-center'
                     }>  Account Management  </Link>
 
                     <hr className='m-2 w-40 bg-black h-0.5'/>
 
                     <Link to='/payment_log' className={
                         location.pathname === '/payment_log' ?
-                        'bg-gray-200 rounded-md p-6 w-40 text-center' :
-                        'hover:bg-gray-100 rounded-md p-6 w-40 text-center'
+                        'bg-gray-200 rounded-md p-6 w-50 text-center' :
+                        'hover:bg-gray-100 rounded-md p-6 w-50 text-center'
                     }>  Payment Log</Link>
 
                     <hr className='m-2 w-40 bg-black h-0.5'/>
