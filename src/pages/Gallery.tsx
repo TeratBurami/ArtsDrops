@@ -17,8 +17,7 @@ export default function Gallery() {
           </div>
 
           <div>
-            <div className="h-1 w-4/5 mx-auto my-7 bg-[#8C8C8C] border-0 rounded text-[#8C8C8C] font-semibold">
-            </div>
+            <div className="h-1 w-4/5 mx-auto my-7 bg-[#8C8C8C] border-0 rounded text-[#8C8C8C] font-semibold"></div>
             <div className="grid grid-cols-3 mx-auto items-center w-fit">
                 <div className="text-[#545454] text-sm"><input
                     onClick={handleCheck}
@@ -120,7 +119,7 @@ export default function Gallery() {
           </div>
 
         </div>
-
+        
         <div className=""></div>
       </div>
       <Product></Product>
