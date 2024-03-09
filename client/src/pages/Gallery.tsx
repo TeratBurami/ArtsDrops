@@ -278,27 +278,25 @@ export default function Gallery() {
             </div>
           </div>
           <div>
-            <div className="h-0.5 w-5/6 mx-auto mt-[-50px] bg-[#8C8C8C] border-0 rounded text-[#8C8C8C]">
+            <div className="h-0.5 w-5/6 mx-auto mt-5 bg-[#8C8C8C] border-0 rounded text-[#8C8C8C]">
               {/* Price */}
-              <div>
-                <div className="w-fit mt-20 mx-auto">
+            </div>
+            <div>
+                <div className="my-10 mx-auto w-fit ">
                   <input
-                    className="my-8"
                     type="range"
                     min={0}
                     max={20000}
                     value={price}
                     onChange={handlePriceChange}
                     step={100}
-                  /> ${formattedPrice.toLocaleString()}
-                  
+                  />
+                  <div className="text-[#8C8C8C]">${formattedPrice.toLocaleString()}</div>
                 </div>
               </div>
-            </div>
-            <div></div>
           </div>
           <div>
-            <div className="h-0.5 w-5/6 mx-auto mt-20 my-7 bg-[#8C8C8C] border-0 rounded text-[#8C8C8C]"></div>
+            <div className="h-0.5 w-5/6 mx-auto mt-5 my-7 bg-[#8C8C8C] border-0 rounded text-[#8C8C8C]"></div>
             <div className="grid grid-cols-1 mx-auto items-center w-fit">
               <div className="text-[#545454] text-xs ml-[8px]">
                 <input
