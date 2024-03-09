@@ -5,21 +5,25 @@ import Product from "../components/overlay/Product";
 import Search from "../components/search";
 import Card from "../components/card";
 
-
 export default function Gallery() {
   const [checked, setChecked] = useState(false);
   const handleCheck = () => setChecked(!checked);
   const [Art, setArt] = useState<any[]>([]);
+  const [price, setPrice] = useState<number>(10000);
+
+  const handlePriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPrice(parseInt(event.target.value));
+  };
+
+  const formattedPrice = price < 1000 ? price.toLocaleString() : `${(price / 1000).toFixed(1)}K`;
 
   useEffect(() => {
     fetch("http://localhost:3333/art")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setArt(result);
-        }
-      )
-  }, [])
+      .then((res) => res.json())
+      .then((result) => {
+        setArt(result);
+      });
+  }, []);
 
   return (
     <>
@@ -274,13 +278,27 @@ export default function Gallery() {
             </div>
           </div>
           <div>
-            <div className="h-0.5 w-5/6 mx-auto my-7 bg-[#8C8C8C] border-0 rounded text-[#8C8C8C]">
+            <div className="h-0.5 w-5/6 mx-auto mt-[-50px] bg-[#8C8C8C] border-0 rounded text-[#8C8C8C]">
               {/* Price */}
+              <div>
+                <div className="w-fit mt-20 mx-auto">
+                  <input
+                    className="my-8"
+                    type="range"
+                    min={0}
+                    max={20000}
+                    value={price}
+                    onChange={handlePriceChange}
+                    step={100}
+                  /> ${formattedPrice.toLocaleString()}
+                  
+                </div>
+              </div>
             </div>
             <div></div>
           </div>
           <div>
-            <div className="h-0.5 w-5/6 mx-auto my-7 bg-[#8C8C8C] border-0 rounded text-[#8C8C8C]"></div>
+            <div className="h-0.5 w-5/6 mx-auto mt-20 my-7 bg-[#8C8C8C] border-0 rounded text-[#8C8C8C]"></div>
             <div className="grid grid-cols-1 mx-auto items-center w-fit">
               <div className="text-[#545454] text-xs ml-[8px]">
                 <input
@@ -323,9 +341,13 @@ export default function Gallery() {
         </div>
 
         <div className="grid grid-cols-4">
-            {Art.map(art=>(
-                <img src={art.picture} key={art.id} className="h-[210px] w-[150px] mx-5 objext cover"></img>
-            ))}
+          {Art.map((art) => (
+            <img
+              src={art.picture}
+              key={art.id}
+              className="h-[210px] w-[150px] mx-5 objext cover"
+            ></img>
+          ))}
         </div>
       </div>
       <Product></Product>
