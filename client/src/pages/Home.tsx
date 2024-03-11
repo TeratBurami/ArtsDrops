@@ -20,6 +20,11 @@ export default function Home() {
       )
   }, [])
 
+  const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'THB',
+  });
+
 
   return (
     <>
@@ -77,9 +82,9 @@ export default function Home() {
         {products.map(product=>(
             <div className="img w-3/4">
                 <img src={product.picture} alt="" className="p-3 shadow-md shadow-slate-400 mb-3 w-[350px] h-[450px]"/>
-                <div className="mx-auto w-fit"><span className="font-semibold text-xs"><s>{product.price}</s></span><span className="text-[#FE0000] font-light text-[8px]"> THB</span></div>
+                <div className="mx-auto w-fit"><span className="font-semibold text-xs"><s>{formatter.format(product.price).replace('THB','')}</s></span><span className="text-[#FE0000] font-light text-[8px]"> THB</span></div>
                 <div className="mx-auto w-fit mb-5">
-                    <span className="text-[#FE0000] font-bold">{product.price*0.8}</span><span className="text-[#FE0000] font-light text-xs"> THB</span>
+                    <span className="text-[#FE0000] font-bold">{formatter.format(product.price*0.8).replace('THB','')}</span><span className="text-[#FE0000] font-light text-xs"> THB</span>
                 </div>
                 <div className="mx-auto w-fit"><Button value="Buy" className="submit h-7 w-20 text-sm"></Button></div>
             </div>

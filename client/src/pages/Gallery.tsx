@@ -187,9 +187,9 @@ export default function Gallery() {
 
         <div className="ml-4 grid grid-cols-4 mt-6">
           {Art.map((art) => (
-            <div className="w-fit">
+            <div className="w-fit h-fit hover:scale-125 transition ease-in delay-200">
               <Product name={art.name} image={art.picture} price={art.price} type={art.type} detail={art.descript} className="h-[210px] w-[150px] mx-5"></Product>
-              <p className="text-center font-light text-sm mt-0.5">{art.name}</p>
+              <p className="text-center text-slate-800 text-sm mt-0.5">{art.name}</p>
             </div>
           ))}
         </div>
