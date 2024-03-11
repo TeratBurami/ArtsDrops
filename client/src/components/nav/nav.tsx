@@ -55,7 +55,7 @@ export default function Nav() {
             <SignUp open={showSignup} close={closeSignup} signupToLogin={signupToLogin}></SignUp>
             <Admin open={showAdmin} close={closeAdmin}></Admin>
 
-            <div className="container-2xl border-solid border-b border-black mb-3 pb-3 ">
+            <div className="container-2xl border-solid border-b border-black pb-3 ">
                 <div className="flex flex-row">
                     <div className="website-logo-name flex ml-5 mt-3 w-full">
                         <img src={Icon} alt="" className='w-10 mt-2' />
