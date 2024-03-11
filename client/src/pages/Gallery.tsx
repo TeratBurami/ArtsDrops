@@ -15,7 +15,27 @@ export default function Gallery() {
     setPrice(parseInt(event.target.value));
   };
 
-  const formattedPrice = price < 1000 ? price.toLocaleString() : `${(price / 1000).toFixed(1)}K`;
+  const formattedPrice =
+    price < 1000 ? price.toLocaleString() : `${(price / 1000).toFixed(1)}K`;
+
+  const checkBox = [
+    { name: "Drawing" },
+    { name: "Painting" },
+    { name: "Graffiti" },
+    { name: "Digital Graphic" },
+    { name: "Prints" },
+    { name: "Works on Paper" },
+    { name: "Photography" },
+    { name: "Design" },
+    { name: "NFTs" },
+  ];
+
+  const radio = [
+    { name: "Lowest to Highest price" },
+    { name: "Highest to Lowest price" },
+    { name: "A-Z" },
+    { name: "Z-A" },
+  ];
 
   useEffect(() => {
     fetch("http://localhost:3333/art")
@@ -41,87 +61,17 @@ export default function Gallery() {
               </div>
             </div>
             <div className="grid grid-cols-3 mx-auto items-center w-fit">
-              <div className="text-[#545454] text-xs">
-                <input
-                  onClick={handleCheck}
-                  type="checkbox"
-                  value=""
-                  className="w-2 h-2 mx-1 ml-3 mb-4 bg-gray-100 border-gray-300 rounded"
-                ></input>
-                Drawing
-              </div>
-              <div className="text-[#545454] text-xs">
-                <input
-                  onClick={handleCheck}
-                  type="checkbox"
-                  value=""
-                  className="w-2 h-2 mx-1 ml-3 mb-4 bg-gray-100 border-gray-300 rounded"
-                ></input>
-                Painting
-              </div>
-              <div className="text-[#545454] text-xs">
-                <input
-                  onClick={handleCheck}
-                  type="checkbox"
-                  value=""
-                  className="w-2 h-2 mx-1 ml-3 mb-4 bg-gray-100 border-gray-300 rounded"
-                ></input>
-                Graffiti
-              </div>
-              <div className="text-[#545454] text-xs">
-                <input
-                  onClick={handleCheck}
-                  type="checkbox"
-                  value=""
-                  className="w-2 h-2 mx-1 ml-3 mb-4 bg-gray-100 border-gray-300 rounded"
-                ></input>
-                Digital Graphic
-              </div>
-              <div className="text-[#545454] text-xs">
-                <input
-                  onClick={handleCheck}
-                  type="checkbox"
-                  value=""
-                  className="w-2 h-2 mx-1 ml-3 mb-4 bg-gray-100 border-gray-300 rounded"
-                ></input>
-                Prints
-              </div>
-              <div className="text-[#545454] text-xs">
-                <input
-                  onClick={handleCheck}
-                  type="checkbox"
-                  value=""
-                  className="w-2 h-2 mx-1 ml-3 mb-4 bg-gray-100 border-gray-300 rounded"
-                ></input>
-                Works on Paper
-              </div>
-              <div className="text-[#545454] text-xs">
-                <input
-                  onClick={handleCheck}
-                  type="checkbox"
-                  value=""
-                  className="w-2 h-2 mx-1 ml-3 mb-4 bg-gray-100 border-gray-300 rounded"
-                ></input>
-                Photography
-              </div>
-              <div className="text-[#545454] text-xs">
-                <input
-                  onClick={handleCheck}
-                  type="checkbox"
-                  value=""
-                  className="w-2 h-2 mx-1 ml-3 mb-4 bg-gray-100 border-gray-300 rounded"
-                ></input>
-                Design
-              </div>
-              <div className="text-[#545454] text-xs">
-                <input
-                  onClick={handleCheck}
-                  type="checkbox"
-                  value=""
-                  className="w-2 h-2 mx-1 ml-3 mb-4 bg-gray-100 border-gray-300 rounded"
-                ></input>
-                NFTs
-              </div>
+              {checkBox.map((item) => (
+                <div className="text-[#545454] text-xs">
+                  <input
+                    onClick={handleCheck}
+                    type="checkbox"
+                    value={item.name}
+                    className="w-2 h-2 mx-1 ml-3 mb-4 bg-gray-100 border-gray-300 rounded"
+                  />
+                  {item.name}
+                </div>
+              ))}
             </div>
           </div>
           <div>
@@ -129,58 +79,36 @@ export default function Gallery() {
               {/* Price */}
             </div>
             <div>
-                <div className="my-10 mx-auto w-fit ">
-                  <input
-                    type="range"
-                    min={0}
-                    max={20000}
-                    value={price}
-                    onChange={handlePriceChange}
-                    step={100}
-                  />
-                  <div className="text-[#8C8C8C]">${formattedPrice.toLocaleString()}</div>
+              <div className="my-10 mx-auto w-fit ">
+                <input
+                  type="range"
+                  min={0}
+                  max={20000}
+                  value={price}
+                  onChange={handlePriceChange}
+                  step={100}
+                />
+                <div className="text-[#8C8C8C]">
+                  ${formattedPrice.toLocaleString()}
                 </div>
               </div>
+            </div>
           </div>
           <div>
             <div className="h-0.5 w-5/6 mx-auto mt-5 my-7 bg-[#8C8C8C] border-0 rounded text-[#8C8C8C]"></div>
             <div className="grid grid-cols-1 mx-auto items-center w-fit">
-              <div className="text-[#545454] text-xs ml-[8px]">
-                <input
-                  type="radio"
-                  name="sort"
-                  value=""
-                  className="w-2 h-2 mx-1 mb-4 text-blue-600 bg-gray-100 border-gray-300 rounded"
-                ></input>
-                Lowest to Highest price
-              </div>
-              <div className="text-[#545454] text-xs ml-[8px]">
-                <input
-                  type="radio"
-                  name="sort"
-                  value=""
-                  className="w-2 h-2 mx-1 mb-4 text-blue-600 bg-gray-100 border-gray-300 rounded"
-                ></input>
-                Highest to Lowest price
-              </div>
-              <div className="text-[#545454] text-xs ml-[8px]">
-                <input
-                  type="radio"
-                  value=""
-                  name="sort"
-                  className="w-2 h-2 mx-1 mb-4 text-blue-600 bg-gray-100 border-gray-300 rounded"
-                ></input>
-                A-Z
-              </div>
-              <div className="text-[#545454] text-xs ml-[8px]">
-                <input
-                  type="radio"
-                  value=""
-                  name="sort"
-                  className="w-2 h-2 mx-1 mb-4 text-blue-600 bg-gray-100 border-gray-300 rounded"
-                ></input>
-                Z-A
-              </div>
+              {radio.map((item) => (
+                <div className="text-[#545454] text-xs">
+                  <input
+                    name="radio"
+                    onClick={handleCheck}
+                    type="radio"
+                    value={item.name}
+                    className="w-2 h-2 mx-1 ml-3 mb-4 bg-gray-100 border-gray-300 rounded"
+                  />
+                  {item.name}
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -188,8 +116,17 @@ export default function Gallery() {
         <div className="ml-4 grid grid-cols-4 mt-6">
           {Art.map((art) => (
             <div className="w-fit h-fit hover:scale-125 transition ease-in delay-200">
-              <Product name={art.name} image={art.picture} price={art.price} type={art.type} detail={art.descript} className="h-[210px] w-[150px] mx-5"></Product>
-              <p className="text-center text-slate-800 text-sm mt-0.5">{art.name}</p>
+              <Product
+                name={art.name}
+                image={art.picture}
+                price={art.price}
+                type={art.type}
+                detail={art.descript}
+                className="h-[210px] w-[150px] mx-5"
+              ></Product>
+              <p className="text-center text-slate-800 text-sm mt-0.5">
+                {art.name}
+              </p>
             </div>
           ))}
         </div>
