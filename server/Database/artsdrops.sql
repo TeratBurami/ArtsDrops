@@ -29,7 +29,7 @@ CREATE TABLE Payment(
 );
 
 
-INSERT INTO Art(name,type,price,id,descript,picture)
+INSERT INTO art(name,type,price,id,descript,picture)
 VALUES
 ('Fancy Sky','Digital Art',2000.00,1,'Fancy sky and city digital art','https://i.pinimg.com/564x/44/68/98/44689878b2de08cabd23ff2c31658ce5.jpg'),
 ('PalaceLearning','Painting',8000.00,2,'PalaceLearning Cafe Terrace at Night Poster by Vincent Van Gogh - 1881 - Fine Art Print - The Cafe Terrace on The Place du Forum','https://i.pinimg.com/564x/3c/c7/af/3cc7af43775361a90a5c13ab2422ea9b.jpg'),
