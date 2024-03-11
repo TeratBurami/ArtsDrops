@@ -56,18 +56,17 @@ export default function Gallery() {
 
           <div>
             <div>
-              <div className="mx-auto w-fit font-semibold text-[#8C8C8C]">
-                {/* Medium */}
-              </div>
+            <div className="h-0.5 w-3/4 mx-auto my-[23px] bg-[#8C8C8C] border-0 rounded text-[#8C8C8C]"></div>
+            <div className="mx-[140px] w-fit mt-[-45px] absolute bg-[#F2F2F2] border-8 border-[#F2F2F2] mb-5 font-semibold text-[#8C8C8C]">Mediums</div>
             </div>
             <div className="grid grid-cols-3 mx-auto items-center w-fit">
               {checkBox.map((item) => (
-                <div className="text-[#545454] text-xs">
+                <div className="text-[#545454] text-xs font-semibold">
                   <input
                     onClick={handleCheck}
                     type="checkbox"
                     value={item.name}
-                    className="w-2 h-2 mx-1 ml-3 mb-4 bg-gray-100 border-gray-300 rounded"
+                    className="w-2 border-4 h-2 mx-1 ml-3 mb-4 bg-gray-100 border-gray-300 rounded"
                   />
                   {item.name}
                 </div>
@@ -75,36 +74,36 @@ export default function Gallery() {
             </div>
           </div>
           <div>
-            <div className="h-0.5 w-5/6 mx-auto mt-5 bg-[#8C8C8C] border-0 rounded text-[#8C8C8C]">
-              {/* Price */}
-            </div>
+          <div className="h-0.5 w-3/4 mx-auto my-[29px] bg-[#8C8C8C] border-0 rounded text-[#8C8C8C]"></div>
+            <div className="mx-[155px] w-fit mt-[-51px] absolute bg-[#F2F2F2] border-8 border-[#F2F2F2] mb-5 font-semibold text-[#8C8C8C]">Price</div>
             <div>
-              <div className="my-10 mx-auto w-fit ">
+              <div className="my-8 mx-auto w-fit ">
                 <input
                   type="range"
                   min={0}
-                  max={20000}
+                  max={100000}
                   value={price}
                   onChange={handlePriceChange}
-                  step={100}
+                  step={1000}
                 />
-                <div className="text-[#8C8C8C]">
+                <div className="text-[#8C8C8C] text-center font-semibold">
                   ${formattedPrice.toLocaleString()}
                 </div>
               </div>
             </div>
           </div>
           <div>
-            <div className="h-0.5 w-5/6 mx-auto mt-5 my-7 bg-[#8C8C8C] border-0 rounded text-[#8C8C8C]"></div>
-            <div className="grid grid-cols-1 mx-auto items-center w-fit">
+          <div className="h-0.5 w-3/4 mx-auto my-[29px] bg-[#8C8C8C] border-0 rounded text-[#8C8C8C]"></div>
+            <div className="mx-[155px] w-fit mt-[-51px] absolute bg-[#F2F2F2] border-8 border-[#F2F2F2] mb-5 font-semibold text-[#8C8C8C]">Sort</div>
+            <div className="grid grid-cols-1 mx-auto items-center w-fit ">
               {radio.map((item) => (
-                <div className="text-[#545454] text-xs">
+                <div className="text-[#545454] text-xs font-semibold">
                   <input
                     name="radio"
                     onClick={handleCheck}
                     type="radio"
                     value={item.name}
-                    className="w-2 h-2 mx-1 ml-3 mb-4 bg-gray-100 border-gray-300 rounded"
+                    className="w-2 h-2 mx-1 border-4 ml-3 mb-4 bg-gray-100 border-gray-300 rounded"
                   />
                   {item.name}
                 </div>
