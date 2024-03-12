@@ -55,10 +55,7 @@ export default function Gallery() {
           </div>
 
           <div>
-            <div>
-            <div className="h-0.5 w-3/4 mx-auto my-[23px] bg-[#8C8C8C] border-0 rounded text-[#8C8C8C]"></div>
-            <div className="mx-[140px] w-fit mt-[-45px] absolute bg-[#F2F2F2] border-8 border-[#F2F2F2] mb-5 font-semibold text-[#8C8C8C]">Mediums</div>
-            </div>
+            <h2 className="w-2/3 text-center border-b-2 border-[#8C8C8C] leading-[0.1em] mx-auto bg-[#F2F2F2] mb-6"><span className="text-[#8C8C8C] font-semibold bg-[#F2F2F2] py-[10px] px-4">Mediums</span></h2>
             <div className="grid grid-cols-3 mx-auto items-center w-fit">
               {checkBox.map((item) => (
                 <div className="text-[#545454] text-xs font-semibold">
@@ -74,8 +71,7 @@ export default function Gallery() {
             </div>
           </div>
           <div>
-          <div className="h-0.5 w-3/4 mx-auto my-[29px] bg-[#8C8C8C] border-0 rounded text-[#8C8C8C]"></div>
-            <div className="mx-[155px] w-fit mt-[-51px] absolute bg-[#F2F2F2] border-8 border-[#F2F2F2] mb-5 font-semibold text-[#8C8C8C]">Price</div>
+          <h2 className="mt-4 w-2/3 text-center border-b-2 border-[#8C8C8C] leading-[0.1em] mx-auto bg-[#F2F2F2] mb-6"><span className="text-[#8C8C8C] font-semibold bg-[#F2F2F2] py-[10px] px-4">Price</span></h2>
             <div>
               <div className="my-8 mx-auto w-fit ">
                 <input
@@ -93,8 +89,7 @@ export default function Gallery() {
             </div>
           </div>
           <div>
-          <div className="h-0.5 w-3/4 mx-auto my-[29px] bg-[#8C8C8C] border-0 rounded text-[#8C8C8C]"></div>
-            <div className="mx-[155px] w-fit mt-[-51px] absolute bg-[#F2F2F2] border-8 border-[#F2F2F2] mb-5 font-semibold text-[#8C8C8C]">Sort</div>
+          <h2 className="w-2/3 text-center border-b-2 border-[#8C8C8C] leading-[0.1em] mx-auto bg-[#F2F2F2] mb-6"><span className="text-[#8C8C8C] font-semibold bg-[#F2F2F2] py-[10px] px-4">Sort</span></h2>
             <div className="grid grid-cols-1 mx-auto items-center w-fit ">
               {radio.map((item) => (
                 <div className="text-[#545454] text-xs font-semibold">
