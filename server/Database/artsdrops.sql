@@ -1,4 +1,4 @@
--- DROP DATABASE IF EXISTS artsdrops;
+DROP DATABASE IF EXISTS artsdrops;
 
 CREATE DATABASE IF NOT EXISTS artsdrops ;
 
