@@ -14,7 +14,7 @@ export default function AboutUs() {
                 <li>
                     {/*รอรูป คุณบีม!!! */}
                     <div className="flex w-fit mx-auto items-center">
-                        <img src={Sea} alt="" className="mr-40 p-3 shadow-md shadow-slate-400 mb-3 w-60"/>
+                        <img src='' alt="" className="mr-40 p-3 shadow-md shadow-slate-400 mb-3 w-60"/>
                             <div className='w-[1000px] h-[200px] shadow-md p-3 flex items-center justify-center'>
                                 <p className='font-semibold'>"The more I think it over, the more I feel that there is nothing more truly artistic than to love people."
                                     <h2 className='font-light text-right mt-1'>- Terat Burami </h2>
