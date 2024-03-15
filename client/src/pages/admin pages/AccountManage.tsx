@@ -7,19 +7,21 @@ import AddUser from '../../assets/images/user-plus-solid.svg'
 import {Link} from 'react-router-dom'
 
 export default function AccountManage(){
+
+    
     return(
         <div>
             <Nav></Nav>
 
-            <div className='ml-60 mr-6 p-10'>
+            <div className='ml-[12rem] mr-6 p-10'>
                 <h1 className='font-semibold text-2xl pb-4'>Account Management</h1>
-                <div className='bg-gray-200 h-14 flex justify-between items-center'>
+                <div className='rounded-full bg-slate-200 h-14 flex justify-between items-center'>
                     <img src={AddUser} className='w-6 ml-10'></img>
                     <div className='mr-2'>
                         <Search></Search>
                     </div>
                 </div>
-                <table>
+                <table className='mt-10'>
                     <tr>
                         <th className='w-1/12'>ID</th>
                         <th className='w-1/3'>Fullname</th>

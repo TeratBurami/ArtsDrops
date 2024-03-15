@@ -9,6 +9,7 @@ import {useState,useEffect} from 'react'
 
 export default function Home() {
   const [products, setProduct] = useState<any[]>([]);
+  const [artists, setArtist] = useState<any[]>([]);
 
   useEffect(() => {
     fetch("http://localhost:3333/only_4")
@@ -16,6 +17,16 @@ export default function Home() {
       .then(
         (result) => {
           setProduct(result);
+        }
+      )
+  }, [])
+
+  useEffect(() => {
+    fetch("http://localhost:3333/pop_artist")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setArtist(result);
         }
       )
   }, [])
@@ -52,8 +63,8 @@ export default function Home() {
           Popular Artists
         </h1>
         <div className="con bg-slate-200 pt-16 flex flex-cols pb-20 border-t border-b border-slate-400">
-          {products.map(product=>(
-            <Card route="artists" url={product.picture} key={product.id}></Card>
+          {artists.map(artist=>(
+            <Card key={artist.artist_id} name={artist.artist_name} detail="Lorem ipsum (this is artist detail :((  )" sold={artist.amount_sold} id={artist.artist_id}></Card>
           ))}
           
         </div>

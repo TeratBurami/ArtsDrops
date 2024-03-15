@@ -49,7 +49,7 @@ export default function Gallery() {
     <>
       <Nav></Nav>
       <div className="grid grid-cols-1 md:grid-cols-[30%_70%]">
-        <div className="bg-[#F2F2F2] shadow-md">
+        <div className="bg-[#F2F2F2] shadow-md shadow-slate-500 h-full">
           <div className="mx-auto w-fit my-10">
             <Search></Search>
           </div>

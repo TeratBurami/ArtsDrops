@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Button from "../button/button";
 import { Dialog, TextField } from "@mui/material";
 import Visa from '../../assets/images/visa.png'
@@ -9,7 +9,7 @@ import Success from '../../assets/images/success.svg'
 
 interface Props{
   name:string;
-  image:string;
+  image?:string;
   price:number;
   detail:string;
   type:string;
@@ -78,7 +78,7 @@ export default function Product({className:className,name:name,image:image,price
 
   return (
     <div>
-        <img src={image} alt={detail} className={className} onClick={openShow} />
+        <img src={image} alt={detail} className={className+' cursor-pointer'} onClick={openShow} />
         <Dialog open={show} onClose={closeShow} PaperProps={{ sx: { borderRadius: "20px" } }}>
           <div className="w-[500px] h-[600px] grid grid-rows-[45%_55%]">
             <div className="relative">
