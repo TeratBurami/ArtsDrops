@@ -1,6 +1,8 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 export default function Nav(){
+    const location = useLocation();
+
     return (
         <div className='fixed'>
             <div className='border-r border-black w-fit h-full pb-[1000px]'>
