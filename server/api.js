@@ -28,6 +28,16 @@ app.get("/only_4",(req,res)=>{
       });
 })
 
+/*ADDED */
+app.get("/products", (req, res) => {
+    connection.query('SELECT * from art', function(error, results, fields){
+        if (error) throw error;
+        res.json(results)
+    })
+})
+
+/*END OF ADDED */
+
 app.listen(3333,()=>{
     console.log("Running on port 3333");
 })

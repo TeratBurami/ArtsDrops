@@ -24,6 +24,7 @@ INSERT INTO Art VALUES
 ('AR004', 'Pin','Painting',4250.00, 'Pin by Eve Ringers on Portrait | Art prints boho, Abstract art painting, Art inspiration painting',
     'https://i.pinimg.com/564x/48/1f/a7/481fa74f181e64cf8578ea1b54c97076.jpg', 'AT003');
     
+-- FIXED PAYMENT ATTRIBUTES
 INSERT INTO Payment (payment_id, s_address, ptype, totalprice)
 VALUES
 ('P001', '123 Main St, City', 1, 500.00),
