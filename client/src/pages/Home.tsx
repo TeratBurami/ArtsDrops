@@ -64,7 +64,7 @@ export default function Home() {
         </h1>
         <div className="con bg-slate-200 pt-16 flex flex-cols pb-20 border-t border-b border-slate-400">
           {artists.map(artist=>(
-            <Card key={artist.artist_id} name={artist.artist_name} detail="Lorem ipsum (this is artist detail :((  )" sold={artist.amount_sold} id={artist.artist_id}></Card>
+            <Card url={artist.pics} key={artist.artist_id} name={artist.artist_name} detail={artist.descrip} sold={artist.amount_sold} id={artist.artist_id}></Card>
           ))}
           
         </div>

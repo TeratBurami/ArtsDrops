@@ -4,12 +4,21 @@ import './table.css'
 import Edit from '../../assets/images/user-pen-solid.svg'
 import Delete from '../../assets/images/user-minus-solid.svg'
 import AddUser from '../../assets/images/user-plus-solid.svg'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
-export default function AccountManage(){
+export default function AccountManage() {
 
-    
-    return(
+    const [Account, setAccount] = useState<any[]>([])
+
+    useEffect(() => {
+        fetch('http://localhost:3333/account').then(res => res.json()).then(
+            result => setAccount(result)
+        )
+    }, [])
+
+
+    return (
         <div>
             <Nav></Nav>
 
@@ -34,36 +43,25 @@ export default function AccountManage(){
 
                     {
                         /*TESTER */
-                        <tr>
-                            <td>001</td>
-                            <td>Mr. Pathompum Jirakarnpaisan</td>
-                            <td>flymoontotheme@gmail.com</td>
-                            <td>099-999-9999</td>
-                            <td>Admin</td>
-                            <td>
-                                <Link to=''>
-                                    <img src={Edit} className='w-6'></img>
-                                </Link>
-                            </td>
-                            <td>
-                                <Link to=''>
-                                    <img src={Delete} className='w-6'></img>
-                                </Link>
-                            </td>
-                        </tr>
-                    }
-
-                    {
-                        /*TESTER*/
-                        <tr>
-                            <td>002</td>
-                            <td>Mr. Terat Burami</td>
-                            <td>TeratBur@gmail.com</td>
-                            <td>099-999-9999</td>
-                            <td>User</td>
-                            <td><img src={Edit} className='w-6'></img></td>
-                            <td><img src={Delete} className='w-6'></img></td>
-                        </tr>
+                        Account.map(account => (
+                            <tr>
+                                <td>{account.account_id}</td>
+                                <td>{account.username}</td>
+                                <td>flymoontotheme@gmail.com</td>
+                                <td>099-999-9999</td>
+                                <td>{account.Rolee === null? 'User': 'Admin'}</td>
+                                <td>
+                                    <Link to=''>
+                                        <img src={Edit} className='w-6'></img>
+                                    </Link>
+                                </td>
+                                <td>
+                                    <Link to=''>
+                                        <img src={Delete} className='w-6'></img>
+                                    </Link>
+                                </td>
+                            </tr>
+                        ))
                     }
 
                 </table>

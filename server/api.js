@@ -33,6 +33,21 @@ app.post('/register',jsonParser,function(req,res,next){
 
 })
 
+app.get('/account',(req, res) => {
+  connection.query('SELECT a.*, ad.Rolee FROM Account a LEFT JOIN Admin ad ON a.account_id = ad.account_id LEFT JOIN User u on u.account_id = a.account_id',
+  function(err, results, fields){
+    if(err) throw err;
+    res.json(results);
+  })
+})
+
+app.get('/payment_log', (req, res) => {
+  connection.query('SELECT * FROM Buy JOIN Art ON Buy.art_id = Art.art_id JOIN Account ON Buy.account_id = Account.account_id', function(err, results, fields){
+    if(err) throw err;
+    res.json(results);
+  })
+})
+
 app.get('/users',(req,res)=>{
   connection.query('SELECT * FROM User',function(err,results,fields){
     if(err) throw err;

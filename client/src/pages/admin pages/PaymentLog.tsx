@@ -1,8 +1,23 @@
+import { useEffect, useState } from 'react'
 import Nav from '../../components/admin/nav'
 import Search from '../../components/search'
 import './table.css'
 
 export default function PaymentLog(){
+
+    const [Payment, setPayment] = useState<any[]>([])
+
+    useEffect( ()=> {
+        fetch("http://localhost:3333/payment_log")
+        .then(res => res.json())
+        .then(
+            (result) => {
+                setPayment(result);
+            }
+        )
+    }, [])
+
+
     return(
         <>
             <Nav></Nav>
@@ -25,15 +40,16 @@ export default function PaymentLog(){
                     </tr>
 
                     {
-                        /*TESTER */
-                        <tr>
-                            <td>001</td>
-                            <td>Lorem Ipsum</td>
-                            <td>001</td>
-                            <td>0123456789</td>
-                            <td>100,000.00 THB</td>
-                            <td>14/2/2024 18:08</td>
-                        </tr>
+                        Payment.map( payment =>
+                            <tr>
+                                <td>{payment.art_id}</td>
+                                <td>{payment.art_name}</td>
+                                <td>{payment.account_id}</td>
+                                <td>{payment.paid_id}</td>
+                                <td>{payment.price} THB</td>
+                                <td>14/2/2024 18:08</td>
+                            </tr>
+                        )
                     }
 
                 </table>

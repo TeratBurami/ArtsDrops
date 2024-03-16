@@ -56,7 +56,7 @@ export default function ProdManage() {
                             <tr>
                                 <td>{product.art_id}</td>
                                 <td>{product.art_name}</td>
-                                <td>{product.atype}</td>
+                                <td>{product.type}</td>
                                 <td>{product.artist_name}</td>
                                 <td>{formatter.format(product.price).replace('THB','')}</td>
                                 <td>
