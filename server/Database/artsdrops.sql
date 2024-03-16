@@ -46,6 +46,8 @@ CREATE TABLE Account(
 
 CREATE TABLE User(
     account_id  char(5)         PRIMARY KEY,
+    username    varchar(100)    NOT NULL,
+    password    varchar(100)    NOT NULL,
     email       varchar(30),
     DOB         date,
     phone_no    char(10),
