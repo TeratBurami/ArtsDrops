@@ -45,6 +45,11 @@ export default function Gallery() {
       });
   }, []);
 
+  const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'THB',
+  });
+
   return (
     <>
       <Nav></Nav>
@@ -61,8 +66,9 @@ export default function Gallery() {
                 <div className="text-[#545454] text-xs font-semibold">
                   <input
                     onClick={handleCheck}
-                    type="checkbox"
+                    type="radio"
                     value={item.name}
+                    name="rad"
                     className="w-2 border-4 h-2 mx-1 ml-3 mb-4 bg-gray-100 border-gray-300 rounded"
                   />
                   {item.name}
@@ -83,7 +89,7 @@ export default function Gallery() {
                   step={1000}
                 />
                 <div className="text-[#8C8C8C] text-center font-semibold">
-                  ${formattedPrice.toLocaleString()}
+                  {formatter.format(price).replace('THB','')}<span className="font-light text-xs"> THB</span>
                 </div>
               </div>
             </div>
@@ -107,9 +113,9 @@ export default function Gallery() {
           </div>
         </div>
 
-        <div className="ml-4 grid grid-cols-4 mt-6">
+        <div className="ml-4 flex flex-wrap justify-center mt-6">
           {Art.map((art) => (
-            <div className="w-fit h-fit hover:scale-125 transition ease-in delay-200">
+            <div className="basis-1/4 w-[150px] h-fit hover:scale-110 transition ease-in delay-200">
               <Product
                 name={art.name}
                 image={art.picture}
@@ -118,8 +124,8 @@ export default function Gallery() {
                 detail={art.descript}
                 className="h-[210px] w-[150px] mx-5"
               ></Product>
-              <p className="text-center text-slate-800 text-sm mt-0.5">
-                {art.name}
+              <p className="text-center mr-4 text-slate-800 text-sm mt-0.5">
+                {art.art_name}
               </p>
             </div>
           ))}

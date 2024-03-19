@@ -6,13 +6,14 @@ import Card from "../components/card";
 import ArtToy from '../assets/images/art_toy.svg';
 import Clock from '../components/Clock/clock';
 import {useState,useEffect} from 'react'
+import Product from '../components/overlay/Product'
 
 export default function Home() {
   const [products, setProduct] = useState<any[]>([]);
   const [artists, setArtist] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3333/only_4")
+    fetch("http://localhost:3333/art")
       .then(res => res.json())
       .then(
         (result) => {
@@ -35,6 +36,7 @@ export default function Home() {
     style: 'currency',
     currency: 'THB',
   });
+
 
 
   return (
@@ -88,16 +90,24 @@ export default function Home() {
               <Clock></Clock>
           </div>
         </div>
-        <div className="arts w-5/6 grid grid-cols-2 gap-[10px] border-l border-slate-400 pl-[30px]">
+        <div className="arts w-2/3 grid grid-cols-2 ml-20 border-l border-slate-400">
 
         {products.map(product=>(
             <div className="img w-3/4">
-                <img src={product.picture} alt="" className="p-3 shadow-md shadow-slate-400 mb-3 w-[350px] h-[450px]"/>
+                <img src={product.picture} alt="" className="p-3 mx-auto shadow-md shadow-slate-400 mb-3 w-[200px] h-[300px]"/>
                 <div className="mx-auto w-fit"><span className="font-semibold text-xs"><s>{formatter.format(product.price).replace('THB','')}</s></span><span className="text-[#FE0000] font-light text-[8px]"> THB</span></div>
                 <div className="mx-auto w-fit mb-5">
                     <span className="text-[#FE0000] font-bold">{formatter.format(product.price*0.8).replace('THB','')}</span><span className="text-[#FE0000] font-light text-xs"> THB</span>
                 </div>
-                <div className="mx-auto w-fit"><Button value="Buy" className="submit h-7 w-20 text-sm"></Button></div>
+                <div className="mx-auto w-fit"><Product
+                name={product.name}
+                image={product.picture}
+                price={product.price}
+                type={product.type}
+                detail={product.descript}
+                button={true}
+                className="h-[210px] w-[150px] mx-5"
+              ></Product></div>
             </div>
           ))}
         </div>

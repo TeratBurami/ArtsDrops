@@ -6,9 +6,10 @@ interface Props {
   value: string;
   route?: string;
   onclick?:()=>void;
+  hidden?:boolean;
 }
 
-export default function Button({ className: className, value: value, route:route='' ,onclick:onclick}: Props) {
+export default function Button({ className: className, value: value, route:route='' ,onclick:onclick,hidden:hidden}: Props) {
   let navigate = useNavigate();
   const routeChange = () => {
     let path = `/${route}`;
@@ -17,7 +18,7 @@ export default function Button({ className: className, value: value, route:route
 
   return (
     <>
-      <button className={className} onClick={route==''? onclick:routeChange}>{value}</button>
+      <button className={className} hidden={hidden} onClick={route==''? onclick:routeChange}>{value}</button>
     </>
   )
 }

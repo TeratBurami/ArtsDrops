@@ -28,9 +28,6 @@ app.post('/register',jsonParser,function(req,res,next){
       res.json({status:'success'})
     }
   )
-  // var email=req.body.email
-  // res.json({email})
-
 })
 
 app.get('/account',(req, res) => {
@@ -69,11 +66,11 @@ app.get("/art",(req,res)=>{
     });
 })
 
-app.get("/only_4",(req,res)=>{
-    connection.query('SELECT * FROM Art limit 4', function (error, results, fields) {
-        if (error) throw error;
-        res.json(results)
-      });
+app.get("/art_random",(req,res)=>{
+  connection.query('SELECT * FROM Art WHERE art_id LIKE ', function (error, results, fields) {
+      if (error) throw error;
+      res.json(results)
+    });
 })
 
 app.get('/pop_artist',(req,res)=>{

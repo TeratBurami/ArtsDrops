@@ -27,26 +27,24 @@ export default function AddProduct({ className: className }: Props) {
         setImg(event.target.value as string);
     }
 
-    console.log(imgData);
-
-
     return (
         <>
             <img src={Icon} className={className + ' cursor-pointer'} alt='Add cart' onClick={openShow} />
             <Dialog open={show} onClose={closeShow} PaperProps={{ sx: { borderRadius: "20px" } }}>
-                <div className="p-2 w-[600px] h-[450px] grid grid-rows-[50%_25%_25%]" >
+                <div className="p-2 pl-10 pr-10 w-[550px] h-[500px] grid grid-rows-[70%_15%_5%]" >
 
 
-                    <div className="grid grid-cols-2">
-                        <div className="grid grid-rows-2">
-                            <div className="bg-slate-400 mx-auto w-[100px] h-[150px] rounded">
-                                <img className='w-[100px] h-[150px]' src={imgData} alt="Preview image" />
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-rows-[20%_50%_30%]">
+                            <h1 className='font-bold text-2xl text-center h-fit mt-4'>Add Product</h1>
+                            <div className="bg-slate-400 mx-auto w-[140px] h-[160px] rounded">
+                                <img className='w-full h-full rounded' src={imgData} hidden={imgData==''} alt="Wrong URL Please try again" />
                             </div>
                             <div className="mx-auto mt-6">
                                 <TextField label="Picture" variant="outlined" InputProps={{ sx: { borderRadius: 5, height: 50, width: 170 } }} value={imgData} onChange={handleImg} />
                             </div>
                         </div>
-                        <div className="grid grid-rows-4">
+                        <div className="grid grid-rows-4 mt-5">
 
                             <TextField label="Name" variant="outlined" InputProps={{ sx: { borderRadius: 5, height: 50, width: 170 } }} />
 
@@ -58,7 +56,7 @@ export default function AddProduct({ className: className }: Props) {
                                     value={type}
                                     label="Type"
                                     onChange={handleChange}
-                                    sx={{ borderRadius: 5, height: 50 }}
+                                    sx={{ borderRadius: 5, height: 50, width:170 }}
 
                                 >
                                     <MenuItem value={'Drawing'}>Drawing</MenuItem>
@@ -78,7 +76,8 @@ export default function AddProduct({ className: className }: Props) {
 
 
                     </div>
-                    <TextField label="Detail" variant="outlined" InputProps={{ sx: { borderRadius: 5, height: 50, width: '100%' } }} />
+                        <TextField label="Detail" variant="outlined" InputProps={{ sx: { borderRadius: 5, height: 50, width: '100%'} }} />
+
                     <Button value='Add' className='submit w-2/3 mx-auto' onclick={closeShow}></Button>
                 </div>
             </Dialog>

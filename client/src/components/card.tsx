@@ -20,8 +20,8 @@ export default function Card({url='https://i.pinimg.com/474x/65/a1/9d/65a19d8514
         />
       </div>
       <div className="info  h-[300px]">
-        <h1 className="ml-3 text-left font-semibold text-2xl mb-6">{name}</h1>
-        <p className="ml-3 text-left text-md mb-40 overflow-auto">{detail}</p>
+        <h1 className="ml-3 text-left font-semibold text-3xl mb-6">{name}</h1>
+        <p className="ml-3 text-left text-lg mb-28 overflow-auto">{detail}</p>
         <div className="w-2/3 mx-auto">
           <Artist image={url} name={name} sold={sold} id={id}></Artist>
         </div>

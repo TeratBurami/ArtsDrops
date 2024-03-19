@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../button/button";
 import { Dialog, TextField } from "@mui/material";
 import Visa from '../../assets/images/visa.png'
@@ -17,7 +17,7 @@ interface Props{
   button?:boolean;
 }
 
-export default function Product({className:className,name:name,image:image,price:price,detail:detail,type:type,button:button}:Props) {
+export default function Product({className:className,name:name,image:image,price:price,detail:detail,type:type,button:button=false}:Props) {
     
     const [show, setShow] = useState(false);
     const openShow=()=>{
@@ -72,19 +72,21 @@ export default function Product({className:className,name:name,image:image,price
       style: 'currency',
       currency: 'THB',
     });
-  
 
   //Artwork show
 
   return (
     <div>
-        <img src={image} alt={detail} className={className+' cursor-pointer'} onClick={openShow} />
+        <div>
+          <img src={image} alt={detail} className={className+' cursor-pointer'} hidden={button} onClick={openShow}/>
+        </div>
+        <Button value="Buy" className="submit" onclick={openShow} hidden={!button}></Button>
         <Dialog open={show} onClose={closeShow} PaperProps={{ sx: { borderRadius: "20px" } }}>
           <div className="w-[500px] h-[600px] grid grid-rows-[45%_55%]">
             <div className="relative">
-              <img src={image} alt={detail} className="w-full h-full absolute opacity-55" />
-              <div className="absolute mx-[190px] my-[30px] border border-white border-4">
-                <img src={image} alt={detail} className="w-[120px] h-[160px]" />
+                <img src={image} alt={detail} className="absolute w-full h-full opacity-55 blur-[2px] object-cover" />
+              <div className="absolute w-[160px] h-[188px] mx-[170px] my-[20px] border border-white border-4 object-cover">
+                <img src={image} alt={detail} className="w-[160px] h-[180px]" />
               </div>
             </div>
             <div>
