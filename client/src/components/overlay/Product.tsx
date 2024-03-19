@@ -80,7 +80,7 @@ export default function Product({className:className,name:name,image:image,price
         <div>
           <img src={image} alt={detail} className={className+' cursor-pointer'} hidden={button} onClick={openShow}/>
         </div>
-        <Button value="Buy" className="submit" onclick={openShow} hidden={!button}></Button>
+        <Button value="Buy" className={className} onclick={openShow} hidden={!button}></Button>
         <Dialog open={show} onClose={closeShow} PaperProps={{ sx: { borderRadius: "20px" } }}>
           <div className="w-[500px] h-[600px] grid grid-rows-[45%_55%]">
             <div className="relative">

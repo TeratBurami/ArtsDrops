@@ -21,8 +21,7 @@ export default function Arttoys(){
     return(
         <>
             <Nav></Nav> 
-            <h1>art toy</h1>
-            <div className='grid grid-cols-2 mx-auto w-fit gap-10 mt-10 mb-10'>
+            <div className='grid grid-cols-2 mx-auto w-fit gap-16 mt-10 mb-10'>
                 {arttoys.map(arttoy => (
 
                     <div className='relative'>
@@ -34,7 +33,8 @@ export default function Arttoys(){
                          price={arttoy.price}
                          type={arttoy.type}
                          detail={arttoy.descript}
-                         className="h-[210px] w-[150px] mx-5 object-cover"
+                         button={true}
+                         className="object-cover absolute normal border-white text-white top-[85%] left-[17%] w-2/3 hover:border-black hover:text-black"
                        ></Product>}
                     </div>
                 ))

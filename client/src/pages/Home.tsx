@@ -13,7 +13,7 @@ export default function Home() {
   const [artists, setArtist] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3333/art")
+    fetch("http://localhost:3333/only_4")
       .then(res => res.json())
       .then(
         (result) => {
@@ -99,14 +99,14 @@ export default function Home() {
                 <div className="mx-auto w-fit mb-5">
                     <span className="text-[#FE0000] font-bold">{formatter.format(product.price*0.8).replace('THB','')}</span><span className="text-[#FE0000] font-light text-xs"> THB</span>
                 </div>
-                <div className="mx-auto w-fit"><Product
+                <div className="mx-auto w-fit mb-4"><Product
                 name={product.name}
                 image={product.picture}
                 price={product.price}
                 type={product.type}
                 detail={product.descript}
                 button={true}
-                className="h-[210px] w-[150px] mx-5"
+                className="submit"
               ></Product></div>
             </div>
           ))}

@@ -66,6 +66,13 @@ app.get("/art",(req,res)=>{
     });
 })
 
+app.get("/only_4",(req,res)=>{
+  connection.query('SELECT * FROM Art limit 4', function (error, results, fields) {
+      if (error) throw error;
+      res.json(results)
+    });
+})
+
 app.get("/art_toy",(req,res)=>{
   connection.query('SELECT * FROM Art WHERE Art.type LIKE "Art toy" ', function (error, results, fields) {
       if (error) throw error;

@@ -113,18 +113,18 @@ export default function Gallery() {
           </div>
         </div>
 
-        <div className="ml-4 flex flex-wrap justify-center mt-6">
+        <div className="ml-4 flex flex-wrap justify-start mt-6">
           {Art.map((art) => (
-            <div className="basis-1/4 w-[150px] h-fit hover:scale-110 transition ease-in delay-200">
+            <div className="mb-12 basis-1/4 w-[150px] h-fit hover:scale-110 transition ease-in delay-200">
               <Product
                 name={art.name}
                 image={art.picture}
                 price={art.price}
                 type={art.type}
                 detail={art.descript}
-                className="h-[210px] w-[150px] mx-5"
+                className="h-[210px] w-[150px] mx-auto"
               ></Product>
-              <p className="text-center mr-4 text-slate-800 text-sm mt-0.5">
+              <p className="text-center text-slate-800 text-sm mt-0.5">
                 {art.art_name}
               </p>
             </div>
