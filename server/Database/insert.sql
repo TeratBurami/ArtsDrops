@@ -22,7 +22,25 @@ INSERT INTO Art VALUES
     'https://i.pinimg.com/564x/43/4c/dc/434cdcac98e36e57e15048b9e0eadfb4.jpg', 'AT001'),
 
 ('AR004', 'Pin','Painting',4250.00, 'Pin by Eve Ringers on Portrait | Art prints boho, Abstract art painting, Art inspiration painting',
-    'https://i.pinimg.com/564x/48/1f/a7/481fa74f181e64cf8578ea1b54c97076.jpg', 'AT003');
+    'https://i.pinimg.com/564x/48/1f/a7/481fa74f181e64cf8578ea1b54c97076.jpg', 'AT003'),
+
+('AR005', 'Pino Jelly', 'Art toy', 375.00, 'Pino Jelly How Are You Feeling Today Series', 
+    'https://i.pinimg.com/564x/d4/17/fe/d417fe3f2f658307031c1fcac0bb9f19.jpg','AT002'),
+
+('AR006', 'Space Molly', 'Art toy', 390.00, 'MEGA SPACE MOLLY GLACIER',
+    'https://i.pinimg.com/564x/d5/e4/32/d5e4322bf75d1f15b0f9a7719a51904e.jpg', 'AT002'),
+
+('AR007', 'SKULLPAND', 'Art toy', 380.00, 'SKULLPANDA City of Night Series', 
+    'https://i.pinimg.com/564x/ba/6b/67/ba6b67228dca1899df2a105f627a0e40.jpg', 'AT002'),
+
+('AR008', 'Hirono', 'Art toy', 452.00, 'Hirono City of Mercy Series',
+    'https://i.pinimg.com/564x/9b/0d/66/9b0d66747c22e14c071645fdfce07775.jpg', 'AT002'),
+    
+('AR009', 'Dimoo', 'Art toy', 275.00, 'Dimoo Jurassic World Series',
+    'https://i.pinimg.com/564x/61/f7/1d/61f71dff2f1f871f466fb6ca9eb89c45.jpg', 'AT002'),
+
+('AR010', 'Labubu', 'Art toy', 890.00, 'Embrace the Magic of Imagination with Our Labubu Dress-Up Latte Doll',
+    'https://i.pinimg.com/564x/cd/66/11/cd6611ce68b0c571bfcbbf27a73202be.jpg', 'AT002');
     
 -- FIXED PAYMENT ATTRIBUTES
 INSERT INTO Payment (payment_id, s_address, ptype, totalprice)
