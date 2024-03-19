@@ -66,18 +66,32 @@ app.get("/art",(req,res)=>{
     });
 })
 
-app.get("/art_random",(req,res)=>{
-  connection.query('SELECT * FROM Art WHERE art_id LIKE ', function (error, results, fields) {
-      if (error) throw error;
-      res.json(results)
-    });
-})
+// app.get("/art_random",(req,res)=>{
+//   connection.query('SELECT * FROM Art WHERE art_id LIKE ', function (error, results, fields) {
+//       if (error) throw error;
+//       res.json(results)
+//     });
+// })
 
 app.get('/pop_artist',(req,res)=>{
-  connection.query('SELECT * FROM Artist limit 3', function (error,results,fields){
+  connection.query('SELECT * FROM Artist limit 4', function (error,results,fields){
     if (error) throw error;
     res.json(results)
   })
+})
+
+app.post('/addProduct',jsonParser,function(req,res,next){
+  connection.execute(
+    'INSERT INTO Art (art_id,art_name,type,price,descript,picture,artist_id) VALUES (?, ?, ?, ?, ?, ?, ?)',
+    ['AR'+Math.floor(Math.random() * 100) + 1,req.body.art_name,req.body.type,req.body.price,req.body.descript,req.body.picture,req.body.artist_id],
+    function(err,results,fields){
+      if(err){
+        res.json({status:'error',msg: err.message})
+        return
+      }
+      res.json({status:'success'})
+    }
+  )
 })
 
 app.listen(3333,()=>{
