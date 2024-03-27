@@ -34,7 +34,8 @@ export default function Arttoys(){
                          type={arttoy.type}
                          detail={arttoy.descript}
                          button={true}
-                         className="object-cover absolute normal border-white text-white top-[85%] left-[17%] w-2/3 hover:border-black hover:text-black"
+                         buttonValue='Detail'
+                         className="hover:bg-white/[0.6] object-cover absolute normal font-semibold hover:text-slate-800 top-[85%] left-[17%] w-2/3 bg-black/[0.8] text-white"
                        ></Product>}
                     </div>
                 ))

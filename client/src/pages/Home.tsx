@@ -73,7 +73,7 @@ export default function Home() {
       </div>
 
       <div className="artOfTheDay flex flex-cols py-20">
-        <div className="text-clock w-2/4 h-fit my-auto ml-10px">
+        <div className="text-clock w-2/4 h-fit my-auto ml-20">
           <h1 className="font-semibold text-[30px] text-center mb-3">
             Art Of The Day
           </h1>
@@ -93,8 +93,8 @@ export default function Home() {
         <div className="arts w-2/3 grid grid-cols-2 ml-20 border-l border-slate-400">
 
         {products.map(product=>(
-            <div className="img w-3/4">
-                <img src={product.picture} alt="" className="p-3 mx-auto shadow-md shadow-slate-400 mb-3 w-[200px] h-[300px]"/>
+            <div className="img w-3/4 ml-10">
+                <img src={product.picture} alt="" className="p-3 object-cover mx-auto shadow-md shadow-slate-400 mb-3 w-[200px] h-[300px]"/>
                 <div className="mx-auto w-fit"><span className="font-semibold text-xs"><s>{formatter.format(product.price).replace('THB','')}</s></span><span className="text-[#FE0000] font-light text-[8px]"> THB</span></div>
                 <div className="mx-auto w-fit mb-5">
                     <span className="text-[#FE0000] font-bold">{formatter.format(product.price*0.8).replace('THB','')}</span><span className="text-[#FE0000] font-light text-xs"> THB</span>
@@ -107,6 +107,7 @@ export default function Home() {
                 detail={product.descript}
                 button={true}
                 className="submit"
+                buttonValue="Buy"
               ></Product></div>
             </div>
           ))}

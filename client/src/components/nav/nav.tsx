@@ -1,11 +1,11 @@
 import Button from '../button/button';
 import { Link, useLocation } from 'react-router-dom';
-import Search from '../search';
 import Icon from '../../assets/images/palette-solid.svg';
 import { useState } from 'react';
 import Login from '../overlay/Login';
 import SignUp from '../overlay/SignUp';
 import Admin from '../overlay/Admin';
+import Search from '../../assets/images/magnifying-glass-solid.svg';
 
 export default function Nav() {
     const location = useLocation();
@@ -63,7 +63,11 @@ export default function Nav() {
                         <h1 className="name text-2xl ml-5 mt-2 font-bold">ArtsDrops</h1>
                     </div>
                     <div className="search-signup-login flex container justify-end mt-4">
-                        <Search></Search>
+                        {/* <Search></Search> */}
+                        <div className='hover:border-black rounded-full pl-3 w-fit h-3/4 p-2 flex border-[1.3px] border-[#C4C4C4] text-slate-600'>
+                            <input type="text" placeholder='Search...' className='focus:outline-none'/>
+                            <img src={Search} alt="" className='cursor-pointer w-[15px]'/>
+                        </div>
                         {/* <div className="search h-8 mr-14 w-80 border-solid border-black border rounded-full"></div> */}
                         <Button onclick={openSignup} value='Sign up' className='hover:bg-slate-300 normal h-8 ml-20 mr-3 text-xs font-bold'></Button>
                         <Button onclick={openLogin} value='Login' className='hover:bg-slate-300 hover:text-black normal h-8 bg-black text-white text-xs font-bold'></Button>

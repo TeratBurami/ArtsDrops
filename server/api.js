@@ -16,16 +16,42 @@ var connection = mysql.createConnection({
  
 connection.connect();
 
-app.post('/register',jsonParser,function(req,res,next){
+app.post('/signup',jsonParser,function(req,res,next){
   connection.execute(
-    'INSERT INTO User (username,password,email,DOB,phone_no) VALUES (?, ?, ?, ?, ?)',
-    [req.body.username,req.body.password,req.body.email,req.body.DOB,req.body.tel],
+    'INSERT INTO User (account_id,username,password,email,DOB,phone_no) VALUES (?, ?, ?, ?, ?, ?)',
+    ['U'+Math.floor(Math.random() * 1000) + 1,req.body.username,req.body.password,req.body.email,req.body.DOB,req.body.tel],
     function(err,results,fields){
       if(err){
         res.json({status:'error',msg: err.message})
         return
       }
       res.json({status:'success'})
+    }
+  )
+})
+
+app.post('/login',jsonParser,function(req,res,next){
+  connection.execute(
+    'SELECT * FROM User WHERE email=?',
+    [req.body.email],
+    function(err,users,fields){
+      if(err){
+        res.json({status:'error',msg: err.message})
+        return
+      }
+      else if(users.length==0){
+        res.json({status:"error",msg:"No user found"})
+        console.log('no user')
+        return
+      }
+      else if(req.body.password==users[0].password){
+        res.json({status:'success',msg:"Login success"})
+        console.log('success')
+      }
+      else{
+        res.json({status:'error',msg:"Incorrect"})
+        console.log('failed')
+      }
     }
   )
 })
@@ -59,8 +85,48 @@ app.get("/art_artist",(req,res)=>{
       });
 })
 
+// app.get("/art",(req,res)=>{
+//   connection.query('SELECT * FROM Art', function (error, results, fields) {
+//       if (error) throw error;
+//       res.json(results)
+//     });
+// })
+
 app.get("/art",(req,res)=>{
-  connection.query('SELECT * FROM Art', function (error, results, fields) {
+  var params=[];
+  var sql='SELECT * FROM Art';
+  var type=req.query.type;
+  var search=req.query.search;
+  var price=req.query.price;
+  var sortedName=req.query.sortName;
+  var sortedPrice=req.query.sortPrice;
+
+  if(search || type || price){
+    sql+=' WHERE'
+  }
+  if(search){
+    sql+=' art_name LIKE ?';
+    params.push('%'+search+'%');
+  }
+  if(type){
+    if(search){
+      sql+=' AND';
+    }
+    sql+=' type LIKE ?'
+    params.push(type);
+  }
+  if(price){
+    if(search || type){
+      sql+=' AND';
+    }
+    sql+=' price <= ?';
+    params.push(price);
+  }
+
+  
+
+  connection.execute(sql,params, function (error, results, fields) {
+      
       if (error) throw error;
       res.json(results)
     });
@@ -72,6 +138,8 @@ app.get("/only_4",(req,res)=>{
       res.json(results)
     });
 })
+
+
 
 app.get("/art_toy",(req,res)=>{
   connection.query('SELECT * FROM Art WHERE Art.type LIKE "Art toy" ', function (error, results, fields) {

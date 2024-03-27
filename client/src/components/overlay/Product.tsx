@@ -15,9 +15,10 @@ interface Props{
   type:string;
   className?:string;
   button?:boolean;
+  buttonValue?:string;
 }
 
-export default function Product({className:className,name:name,image:image,price:price,detail:detail,type:type,button:button=false}:Props) {
+export default function Product({className:className,name:name,image:image,price:price,detail:detail,type:type,button:button=false,buttonValue:buttonValue=''}:Props) {
     
     const [show, setShow] = useState(false);
     const openShow=()=>{
@@ -80,7 +81,7 @@ export default function Product({className:className,name:name,image:image,price
         <div>
           <img src={image} alt={detail} className={className+' cursor-pointer'} hidden={button} onClick={openShow}/>
         </div>
-        <Button value="Buy" className={className} onclick={openShow} hidden={!button}></Button>
+        <Button value={buttonValue} className={className} onclick={openShow} hidden={!button}></Button>
         <Dialog open={show} onClose={closeShow} PaperProps={{ sx: { borderRadius: "20px" } }}>
           <div className="w-[500px] h-[600px] grid grid-rows-[45%_55%]">
             <div className="relative">

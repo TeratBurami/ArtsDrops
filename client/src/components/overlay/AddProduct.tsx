@@ -38,7 +38,6 @@ export default function AddProduct({ className: className }: Props) {
     }
 
     const handleSubmit=()=>{
-        console.log(data);
         fetch('http://localhost:3333/addProduct',{
             method:'POST',
             headers:{
