@@ -5,11 +5,7 @@ import Email from '../../assets/images/envelope-solid.svg';
 import Close from '../../assets/images/xmark-solid.svg';
 import Phone from '../../assets/images/phone-solid.svg';
 import User from '../../assets/images/user-solid.svg';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import * as validator from 'email-validator';
 
 //validator.validate("test@email.com");
@@ -60,7 +56,7 @@ export default function SignUp({ open: open, close: close }: Props) {
 
     return (
         <Dialog open={open} onClose={close} PaperProps={{ sx: { borderRadius: "20px" } }}>
-            <div className="w-[450px] h-[700px] px-10 py-5 flex flex-col overflow-y-auto">
+            <div className="w-[450px] h-[500px] px-10 py-5 flex flex-col overflow-y-auto">
                 <div className="w-fit ml-[350px]">
                     <img src={Close} alt="" className='w-[20px] cursor-pointer' onClick={close} />
                 </div>

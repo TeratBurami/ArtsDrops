@@ -83,11 +83,11 @@ export default function Product({className:className,name:name,image:image,price
         </div>
         <Button value={buttonValue} className={className} onclick={openShow} hidden={!button}></Button>
         <Dialog open={show} onClose={closeShow} PaperProps={{ sx: { borderRadius: "20px" } }}>
-          <div className="w-[500px] h-[600px] grid grid-rows-[45%_55%]">
+          <div className="w-[500px] h-[530px] grid grid-rows-[45%_55%]">
             <div className="relative">
                 <img src={image} alt={detail} className="absolute w-full h-full opacity-55 blur-[2px] object-cover" />
-              <div className="absolute w-[160px] h-[188px] mx-[170px] my-[20px] border border-white border-4 object-cover">
-                <img src={image} alt={detail} className="w-[160px] h-[180px]" />
+              <div className="absolute w-[160px] h-[188px] mx-[170px] my-[20px] border border-white border-4">
+                <img src={image} alt={detail} className="w-[160px] h-[180px] object-cover" />
               </div>
             </div>
             <div>
@@ -97,7 +97,7 @@ export default function Product({className:className,name:name,image:image,price
               <p className="mt-4 font-bold text-center text-lg">Artist: Lorem Ipsum</p>
               <p className="mt-2 w-3/4 mx-auto text-center overflow-auto h-[30px]">{detail}</p>
               <p className="mt-4 text-center">Price: {formatter.format(price).replace('THB','')} <span className="text-xs">THB</span></p>
-              <div className="w-1/2 mx-auto mt-2">
+              <div className="w-1/2 mx-auto mt-10">
                 <Button value="Buy now" className="submit w-full" onclick={showToBuy}>
               </Button></div>
             </div>
@@ -105,9 +105,9 @@ export default function Product({className:className,name:name,image:image,price
         </Dialog>
 
         <Dialog open={buy} onClose={closeBuy} PaperProps={{ sx: { borderRadius: "20px" } }}>
-          <div className="w-[500px] h-[600px]">
+          <div className="w-[500px] h-[530px]">
             <div className="grid grid-cols-[43%_57%] gap-2 pt-6 px-16">
-              <img src={image} alt={detail} className="ml-8 w-[80px] h-[120px] border border-white border-4 shadow shadow-slate-400"/>
+              <img src={image} alt={detail} className="ml-8 w-[80px] h-[120px] border border-white border-4 shadow shadow-slate-400 object-cover"/>
               <div>
                 <p className="font-bold text-3xl mt-4">{name}</p>
                 <p className="font-bold text-xl mt-2">Artist: Lorem Ipsum</p>
@@ -136,7 +136,7 @@ export default function Product({className:className,name:name,image:image,price
         </Dialog>
 
         <Dialog open={qr} onClose={closeQR} PaperProps={{ sx: { borderRadius: "20px" } }}>
-          <div className="w-[500px] h-[600px]">
+          <div className="w-[500px] h-[530px]">
           <div className="grid grid-cols-[43%_57%] gap-2 pt-6 px-16">
               <img src={image} alt={detail} className="ml-8 w-[80px] h-[120px] border border-white border-4 shadow shadow-slate-400"/>
               <div>
@@ -152,7 +152,7 @@ export default function Product({className:className,name:name,image:image,price
               <img src={Mastercard} className="cursor-pointer shadow shadow-slate-400 px-2 rounded-2xl w-[60px] h-[40px]" alt="" onClick={qrToBuy}/>
               <img src={QR} className="cursor-pointer shadow shadow-slate-400 px-2 rounded-2xl w-[60px] h-[40px]" alt="" onClick={buyToQR}/>
             </div>
-            <img src={ScanQR} alt="QR code" className="rounded-2xl mx-auto w-[220px] h-[220px] p-4 shadow shadow-slate-400 mt-4" onClick={qrToThank}/>
+            <img src={ScanQR} alt="QR code" className="rounded-2xl mx-auto w-[220px] h-[220px] p-4 shadow shadow-slate-400 mt-10" onClick={qrToThank}/>
           </div>
         </Dialog>
 

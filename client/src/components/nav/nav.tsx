@@ -7,7 +7,7 @@ import SignUp from '../overlay/SignUp';
 import Admin from '../overlay/Admin';
 import Search from '../../assets/images/magnifying-glass-solid.svg';
 
-export default function Nav() {
+export default function Nav(this: any) {
     const location = useLocation();
 
 
@@ -47,6 +47,14 @@ export default function Nav() {
         setSignup(false);
         setLogin(true);
     }
+
+    const [showProduct,setShowProduct]=useState(false);
+
+    const handleKeyPress = (e: { key: string }) => {
+        if (e.key === "Enter") {
+          //show product ที่ชื่อตรงกัน but ยังคิดไม่ออกว่าจะทำ case ที่ไม่เจอยังไง
+        }
+      };
     
 
     return (
@@ -64,8 +72,8 @@ export default function Nav() {
                     </div>
                     <div className="search-signup-login flex container justify-end mt-4">
                         {/* <Search></Search> */}
-                        <div className='hover:border-black rounded-full pl-3 w-fit h-3/4 p-2 flex border-[1.3px] border-[#C4C4C4] text-slate-600'>
-                            <input type="text" placeholder='Search...' className='focus:outline-none'/>
+                        <div className='hover:border-black rounded-full pl-3 w-fit h-3/4 p-2 flex border-[1.3px] border-[#C4C4C4] text-slate-600 focus-within:border-blue-600'>
+                            <input type="text" onKeyUp={handleKeyPress.bind(this)} placeholder='Search...' className='focus:outline-none'/>
                             <img src={Search} alt="" className='cursor-pointer w-[15px]'/>
                         </div>
                         {/* <div className="search h-8 mr-14 w-80 border-solid border-black border rounded-full"></div> */}

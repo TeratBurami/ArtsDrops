@@ -52,12 +52,12 @@ export default function AccountManage() {
                                 <td>{account.Rolee === null? 'User': 'Admin'}</td>
                                 <td>
                                     <Link to=''>
-                                        <img src={Edit} className='w-6'></img>
+                                        <img src={Edit} className='w-4'></img>
                                     </Link>
                                 </td>
                                 <td>
                                     <Link to=''>
-                                        <img src={Delete} className='w-6'></img>
+                                        <img src={Delete} className='w-4'></img>
                                     </Link>
                                 </td>
                             </tr>
