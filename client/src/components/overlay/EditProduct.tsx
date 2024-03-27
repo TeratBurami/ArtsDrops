@@ -120,7 +120,7 @@ export default function EditProduct({ className: className,descript:descript,art
                     </div>
                         <TextField value={data.descript} onChangeCapture={(newData)=>setData({...data,descript:newData.target.value})} label="Detail" variant="outlined" InputProps={{ sx: { borderRadius: 5, height: 50, width: '100%'} }} />
 
-                    <Button value='Add' className='submit w-2/3 mx-auto' onclick={handleSubmit}></Button>
+                    <Button value='Edit' className='submit w-2/3 mx-auto' onclick={handleSubmit}></Button>
                 </div>
             </Dialog>
         </>
