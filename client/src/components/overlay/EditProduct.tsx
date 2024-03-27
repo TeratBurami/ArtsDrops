@@ -62,6 +62,7 @@ export default function EditProduct({ className: className,descript:descript,art
             console.error('Error ',err)
         })
         closeShow();
+        location.reload()
 
     }
     

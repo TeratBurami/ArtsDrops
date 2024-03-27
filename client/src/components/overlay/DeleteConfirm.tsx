@@ -39,7 +39,7 @@ export default function EditProduct({ className: className,art_id:art_id}: Props
             console.error('Error ',err)
         })
         closeShow();
-
+        location.reload()
     }
     
     return (

@@ -54,7 +54,7 @@ export default function AddProduct({ className: className }: Props) {
             console.error('Error ',err)
         })
         closeShow();
-
+        location.reload()
     }
     
 
