@@ -1,11 +1,10 @@
 import Nav from '../../components/admin/nav'
 import Search from '../../components/search'
 import './table.css'
-import Edit from '../../assets/images/user-pen-solid.svg'
-import Delete from '../../assets/images/user-minus-solid.svg'
-import AddUser from '../../assets/images/user-plus-solid.svg'
-import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import RemoveUser from '../../components/overlay/RemoveUser'
+import AddAccount from '../../components/overlay/AddAccount'
+import EditUser from '../../components/overlay/EditUser'
 
 export default function AccountManage() {
 
@@ -17,6 +16,14 @@ export default function AccountManage() {
         )
     }, [])
 
+    const switchCase=(e: number)=>{
+        switch(e){
+            case 0:return 'Super Admin'; break;
+            case 1:return 'Admin'; break;
+            case 2:return 'User'; break;
+        }
+    }
+
 
     return (
         <div>
@@ -25,7 +32,8 @@ export default function AccountManage() {
             <div className='ml-[12rem] mr-6 p-10'>
                 <h1 className='font-semibold text-2xl pb-4'>Account Management</h1>
                 <div className='rounded-full bg-slate-200 h-14 flex justify-between items-center'>
-                    <img src={AddUser} className='w-6 ml-10'></img>
+                    {/* <img src={AddUser} className='w-6 ml-10'></img> */}
+                    <AddAccount className='w-6 ml-6'></AddAccount>
                     <div className='mr-2'>
                         <Search></Search>
                     </div>
@@ -47,18 +55,14 @@ export default function AccountManage() {
                             <tr>
                                 <td>{account.account_id}</td>
                                 <td>{account.username}</td>
-                                <td>flymoontotheme@gmail.com</td>
-                                <td>099-999-9999</td>
-                                <td>{account.Rolee === null? 'User': 'Admin'}</td>
+                                <td>{account.email}</td>
+                                <td>{account.phone_no}</td>
+                                <td>{switchCase(account.user_role)}</td>
                                 <td>
-                                    <Link to=''>
-                                        <img src={Edit} className='w-4'></img>
-                                    </Link>
+                                    <EditUser className='w-4' account_id={account.account_id} username={account.username} email={account.email} DOB={account.DOB} phone_no={account.phone_no} user_role={account.user_role}></EditUser>
                                 </td>
                                 <td>
-                                    <Link to=''>
-                                        <img src={Delete} className='w-4'></img>
-                                    </Link>
+                                    <RemoveUser account_id={account.account_id}></RemoveUser>
                                 </td>
                             </tr>
                         ))

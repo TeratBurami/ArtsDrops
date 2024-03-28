@@ -3,6 +3,7 @@ import Button from "../components/button/button";
 import { useState, useEffect } from "react";
 import Product from "../components/overlay/Product";
 import SearchIcon from "../assets/images/magnifying-glass-solid.svg";
+import Footer from "../components/footer";
 
 export default function Gallery(this: any) {
   const [checked, setChecked] = useState(false);
@@ -92,7 +93,7 @@ export default function Gallery(this: any) {
     <>
       <Nav></Nav>
       <div className="grid grid-cols-1 md:grid-cols-[30%_70%]">
-        <div className="bg-[#F2F2F2] shadow-md shadow-slate-500 h-fit pb-10 sticky top-0">
+        <div className="bg-[#F2F2F2] shadow-md shadow-slate-500 h-[600px] pb-10 sticky top-0 ">
           <div className="mx-auto w-2/3 my-7">
             <input
               id="searchBar"
@@ -191,7 +192,8 @@ export default function Gallery(this: any) {
           {Art.map((art) => (
             <div className="mb-12 basis-1/4 w-[150px] h-fit hover:scale-110 transition ease-in delay-200">
               <Product
-                name={art.name}
+                artist_name={art.artist_name}
+                name={art.art_name}
                 image={art.picture}
                 price={art.price}
                 type={art.type}
@@ -205,6 +207,7 @@ export default function Gallery(this: any) {
           ))}
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 }

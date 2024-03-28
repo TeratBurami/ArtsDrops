@@ -24,6 +24,7 @@ export default function SignUp({ open: open, close: close }: Props) {
         email:'',
         DOB:'',
         tel:'',
+        user_role:2
     })
 
     const handleValidation=()=>{
@@ -36,6 +37,7 @@ export default function SignUp({ open: open, close: close }: Props) {
     }
 
     const handleSubmit=()=>{
+        console.log(data)
         fetch('http://localhost:3333/signup',{
             method:'POST',
             headers:{

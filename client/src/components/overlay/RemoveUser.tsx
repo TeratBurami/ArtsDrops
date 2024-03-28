@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import { Dialog } from "@mui/material";
-import Delete from '../../assets/images/trash-can-regular.svg';
+import Delete from '../../assets/images/user-minus-solid.svg';
 import X_Icon from '../../assets/images/circle-xmark-regular.svg';
 
 interface Props {
     className?: string;
-    art_id:string;
+    account_id:string;
 }
 
-export default function DeleteConfirm({ className: className,art_id:art_id}: Props) {
+export default function RemoveUser({ className: className,account_id:account_id}: Props) {
     
     const [show, setShow] = useState(false)
     const openShow = () => {
@@ -19,12 +19,12 @@ export default function DeleteConfirm({ className: className,art_id:art_id}: Pro
     }
 
     const data={
-        art_id:art_id
+        account_id:account_id
     }
 
 
     const handleSubmit=()=>{
-        fetch('http://localhost:3333/delProduct',{
+        fetch('http://localhost:3333/delAccount',{
             method:'DELETE',
             headers:{
                 'Content-Type':'application/json',
@@ -50,7 +50,7 @@ export default function DeleteConfirm({ className: className,art_id:art_id}: Pro
                     <img src={X_Icon} alt="Delete Icon" className='w-20 mx-auto mt-4' />
                     <h1 className='text-[#FF0000] font-bold text-3xl text-center mt-1'>Are you sure?</h1>
                     <hr className='w-4/5 mx-auto mt-4' />
-                    <h1 className='text-slate-700 text-base text-center mt-4'>Do you really want to delete <span className='text-base font-bold'>{art_id}</span>?<br />This process cannot be undone.</h1>
+                    <h1 className='text-slate-700 text-base text-center mt-4'>Do you really want to delete <span className='text-base font-bold'>{account_id}</span>?<br />This process cannot be undone.</h1>
                     <div className="mx-auto flex gap-10 w-fit mt-4">
                         <button className='border border-slate-300 bg-slate-100 text-slate-600 hover:bg-white hover:text-slate-800 hover:border-slate-800 rounded-lg' onClick={closeShow}>Cancel</button>
                         <button className='bg-[#FF0000] text-white hover:bg-red-400 hover:text-red-900 rounded-lg' onClick={handleSubmit}>Delete</button>

@@ -18,8 +18,8 @@ connection.connect();
 
 app.post('/signup',jsonParser,function(req,res,next){
   connection.execute(
-    'INSERT INTO User (account_id,username,password,email,DOB,phone_no) VALUES (?, ?, ?, ?, ?, ?)',
-    ['U'+Math.floor(Math.random() * 1000) + 1,req.body.username,req.body.password,req.body.email,req.body.DOB,req.body.tel],
+    'INSERT INTO Account (account_id,username,password,email,DOB,phone_no,user_role) VALUES (?, ?, ?, ?, ?, ?,?)',
+    ['U'+Math.floor(Math.random() * 1000) + 1,req.body.username,req.body.password,req.body.email,req.body.DOB,req.body.tel,req.body.user_role],
     function(err,results,fields){
       if(err){
         res.json({status:'error',msg: err.message})
@@ -57,7 +57,7 @@ app.post('/login',jsonParser,function(req,res,next){
 })
 
 app.get('/account',(req, res) => {
-  connection.query('SELECT a.*, ad.Rolee FROM Account a LEFT JOIN Admin ad ON a.account_id = ad.account_id LEFT JOIN User u on u.account_id = a.account_id',
+  connection.query('SELECT * FROM Account',
   function(err, results, fields){
     if(err) throw err;
     res.json(results);
@@ -88,7 +88,7 @@ app.get("/art_artist",(req,res)=>{
 
 app.get("/art",(req,res)=>{
   var params=[];
-  var sql='SELECT * FROM Art';
+  var sql='SELECT * FROM Art JOIN Artist ON Art.artist_id=Artist.artist_id ';
   var type=req.query.type;
   var search=req.query.search;
   var price=req.query.price;
@@ -178,10 +178,38 @@ app.post('/editProduct',jsonParser,function(req,res,next){
   )
 })
 
+app.post('/editUser',jsonParser,function(req,res,next){
+  connection.execute(
+    'UPDATE Account SET username=?,email=?,DOB=?,phone_no=?,user_role=? WHERE account_id=?',
+    [req.body.username,req.body.email,req.body.DOB,req.body.phone_no,req.body.user_role,req.body.account_id],
+    function(err,results,fields){
+      if(err){
+        res.json({status:'error',msg: err.message})
+        return
+      }
+      res.json({status:'success'})
+    }
+  )
+})
+
 app.delete('/delProduct',jsonParser,function(req,res,next){
   connection.execute(
     'DELETE FROM Art WHERE art_id=?',
     [req.body.art_id],
+    function(err,results,fields){
+      if(err){
+        res.json({status:'error',msg: err.message})
+        return
+      }
+      res.json({status:'success'})
+    }
+  )
+})
+
+app.delete('/delAccount',jsonParser,function(req,res,next){
+  connection.execute(
+    'DELETE FROM Account WHERE account_id=?',
+    [req.body.account_id],
     function(err,results,fields){
       if(err){
         res.json({status:'error',msg: err.message})

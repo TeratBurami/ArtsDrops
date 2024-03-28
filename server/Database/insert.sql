@@ -60,27 +60,27 @@ VALUES
 ('L0005', 'user5', 'password5');
 
 
-INSERT INTO Account (account_id, username, password)
+INSERT INTO Account (account_id, username, password,email, DOB, phone_no,user_role)
 VALUES
-('U0001', 'user1', 'password1'),
-('U0002', 'user2', 'password2'),
-('U0003', 'user3', 'password3'),
-('U0004', 'user4', 'password4'),
-('U0005', 'user5', 'password5');
+('U0001', 'user1', 'password1', 'user1@example.com', '1990-01-01', '1234567890',0),
+('U0002', 'user2', 'password2', 'user2@example.com', '1985-02-02', '2345678901',1),
+('U0003', 'user3', 'password3', 'user3@example.com', '1990-03-03', '3456789012',1),
+('U0004', 'user4', 'password4', 'user4@example.com', '2000-03-03', '4567891011',2),
+('U0005', 'user5', 'password5', 'user5@example.com', '1950-03-03', '5678910123',2);
 
 
-INSERT INTO User (account_id, email, DOB, phone_no)
-VALUES
-('U0001', 'user1@example.com', '1990-01-01', '1234567890'),
-('U0002', 'user2@example.com', '1985-02-02', '2345678901'),
-('U0003', 'user3@example.com', '1980-03-03', '3456789012');
+-- INSERT INTO User (account_id, email, DOB, phone_no)
+-- VALUES
+-- ('U0001', 'user1@example.com', '1990-01-01', '1234567890'),
+-- ('U0002', 'user2@example.com', '1985-02-02', '2345678901'),
+-- ('U0003', 'user3@example.com', '1980-03-03', '3456789012');
 
 
 
-INSERT INTO Admin (account_id, Rolee)
-VALUES
-('U0004', 2),
-('U0005', 1);
+-- INSERT INTO Admin (account_id, user_role)
+-- VALUES
+-- ('U0004', 2),
+-- ('U0005', 1);
 
 
 INSERT INTO Input (login_id, account_id, _date)
@@ -92,22 +92,22 @@ VALUES
 ('L0005', 'U0005', '2024-03-15');
 
 
-INSERT INTO Manage (admin_id, account_id)
-VALUES
-('U0004', 'U0001'),
-('U0004', 'U0002'),
-('U0004', 'U0003'),
-('U0004', 'U0004'),
-('U0005', 'U0005');
+-- INSERT INTO Manage (admin_id, account_id)
+-- VALUES
+-- ('U0004', 'U0001'),
+-- ('U0004', 'U0002'),
+-- ('U0004', 'U0003'),
+-- ('U0004', 'U0004'),
+-- ('U0005', 'U0005');
 
 
-INSERT INTO Edit (admin_id, prod_id)
-VALUES
-('U0005', 'AR001'),
-('U0005', 'AR002'),
-('U0005', 'AR001'),
-('U0005', 'AR004'),
-('U0005', 'AR001');
+-- INSERT INTO Edit (admin_id, prod_id)
+-- VALUES
+-- ('U0005', 'AR001'),
+-- ('U0005', 'AR002'),
+-- ('U0005', 'AR001'),
+-- ('U0005', 'AR004'),
+-- ('U0005', 'AR001');
 
 
 INSERT INTO Buy (account_id, art_id, paid_id)
