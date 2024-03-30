@@ -37,7 +37,7 @@ export default function Artist({image:image,name:name,sold:sold,id:id}:Props){
     
     return(
         <div>
-            <Button value='More detail' onclick={openShow} className="submit w-full mx-auto"></Button>
+            <Button value='More detail' onclick={openShow} className="submit w-full mx-auto bg-black hover:text-black hover:border-black"></Button>
             <Dialog open={show} onClose={closeShow} PaperProps={{ sx: { borderRadius: "20px" } }}>
               <div className="w-[500px] h-[600px] grid grid-rows-2 overflow-y-auto">
                 <div className="grid grid-cols-[40%_60%] gap-14 pt-6 px-16 pl-6">
@@ -51,7 +51,7 @@ export default function Artist({image:image,name:name,sold:sold,id:id}:Props){
                   <p className="ml-6 font-semibold text-xl">Artworks: </p>
                   <div className="grid grid-cols-4 mt-4">
                     {arts.filter(art=>art.artist_id==id).map((art)=>(
-                      <Product className="w-[80px] h-[100px] ml-6 rounded-lg mb-4" name={art.art_name} image={art.picture} price={art.price} detail={art.descript} type={art.atype}></Product>
+                      <Product className="w-[80px] h-[100px] ml-6 rounded-lg mb-4" name={art.art_name} image={art.picture} price={art.price} detail={art.descript} type={art.atype} artist_name={art.artist_name}></Product>
                     ))}
                   </div>
                 </div>

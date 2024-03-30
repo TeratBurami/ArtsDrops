@@ -38,17 +38,17 @@ export default function Artists() {
                 </div>
             </div>
 
-            <div className='bg-gray-100 h-[1000px]'> {/*Note that 1000px will be remove and flex the height */}
+            <div className='bg-gray-100'> {/*Note that 1000px will be remove and flex the height */}
                 <div className='pt-8 flex justify-center'>
                     <Search></Search>
                 </div>
 
                 <hr className='m-10 ml-80 mr-80 bg-gray-300 h-0.5'/>
 
-                <div className='grid grid-cols-4 gap-16 mx-auto w-full max-w-screen-lg mt-10 mb-10'>
+                <div className='grid grid-cols-4 gap-16 px-10 w-full mt-10 pb-10'>
                     
                 {artists.map(artist=>(
-                    <Card url={artist.pics} key={artist.artist_id} name={artist.artist_name} detail={artist.descrip} sold={artist.amount_sold} id={artist.artist_id}></Card>
+                    <Card className='h-100 w-96' url={artist.pics} key={artist.artist_id} name={artist.artist_name} detail={artist.descrip} sold={artist.amount_sold} id={artist.artist_id}></Card>
                 ))}
                     
                 </div>
