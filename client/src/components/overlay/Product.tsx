@@ -16,9 +16,10 @@ interface Props{
   className?:string;
   button?:boolean;
   buttonValue?:string;
+  artist_name:string;
 }
 
-export default function Product({className:className,name:name,image:image,price:price,detail:detail,type:type,button:button=false,buttonValue:buttonValue=''}:Props) {
+export default function Product({artist_name:artist_name,className:className,name:name,image:image,price:price,detail:detail,type:type,button:button=false,buttonValue:buttonValue=''}:Props) {
     
     const [show, setShow] = useState(false);
     const openShow=()=>{
@@ -94,7 +95,7 @@ export default function Product({className:className,name:name,image:image,price
               <p className="text-center text-3xl font-bold mt-4">{name}</p>
               <p className="text-slate-500 text-center mt-1 text-sm font-semibold">{type}</p>
               <hr className="mt-2 mx-auto w-3/4 h-[2px] bg-slate-400"/>
-              <p className="mt-4 font-bold text-center text-lg">Artist: Lorem Ipsum</p>
+              <p className="mt-4 font-bold text-center text-lg">Artist: {artist_name}</p>
               <p className="mt-2 w-3/4 mx-auto text-center overflow-auto h-[30px]">{detail}</p>
               <p className="mt-4 text-center">Price: {formatter.format(price).replace('THB','')} <span className="text-xs">THB</span></p>
               <div className="w-1/2 mx-auto mt-10">
@@ -110,7 +111,7 @@ export default function Product({className:className,name:name,image:image,price
               <img src={image} alt={detail} className="ml-8 w-[80px] h-[120px] border border-white border-4 shadow shadow-slate-400 object-cover"/>
               <div>
                 <p className="font-bold text-3xl mt-4">{name}</p>
-                <p className="font-bold text-xl mt-2">Artist: Lorem Ipsum</p>
+                <p className="font-bold text-xl mt-2">Artist: {artist_name}</p>
                 <p className="font-semibold mt-2">Price: {formatter.format(price).replace('THB','')} <span className="text-xs">THB</span></p>
                 
               </div>
@@ -141,7 +142,7 @@ export default function Product({className:className,name:name,image:image,price
               <img src={image} alt={detail} className="ml-8 w-[80px] h-[120px] border border-white border-4 shadow shadow-slate-400"/>
               <div>
                 <p className="font-bold text-3xl mt-4">{name}</p>
-                <p className="font-bold text-xl mt-2">Artist: Lorem Ipsum</p>
+                <p className="font-bold text-xl mt-2">Artist: {artist_name}</p>
                 <p className="font-semibold mt-2">Price: {formatter.format(price).replace('THB','')} <span className="text-xs">THB</span></p>
                 
               </div>

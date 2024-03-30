@@ -133,7 +133,7 @@ app.get("/art",(req,res)=>{
 })
 
 app.get("/only_4",(req,res)=>{
-  connection.query('SELECT * FROM Art limit 4', function (error, results, fields) {
+  connection.query('SELECT * FROM Art JOIN Artist ON Art.artist_id=Artist.artist_id limit 4', function (error, results, fields) {
       if (error) throw error;
       res.json(results)
     });

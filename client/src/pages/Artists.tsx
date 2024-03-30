@@ -13,7 +13,7 @@ export default function Artists() {
     const [artists, setArtist] = useState<any[]>([]);
 
     useEffect(() => {
-        fetch("http://localhost:3333/Artist")
+        fetch("http://localhost:3333/artist")
           .then(res => res.json())
           .then(
             (result) => {

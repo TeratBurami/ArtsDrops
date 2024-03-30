@@ -66,7 +66,7 @@ export default function Home() {
         </h1>
         <div className="con bg-slate-200 pt-16 flex flex-cols pb-20 border-t border-b border-slate-400">
           {artists.map(artist=>(
-            <Card url={artist.pics} key={artist.artist_id} name={artist.artist_name} detail={artist.descrip} sold={artist.amount_sold} id={artist.artist_id}></Card>
+            <Card className="w-1/2 scale-75 hover:scale-100 transition ease-in delay-200" url={artist.pics} key={artist.artist_id} name={artist.artist_name} detail={artist.descrip} sold={artist.amount_sold} id={artist.artist_id}></Card>
           ))}
           
         </div>
@@ -100,6 +100,7 @@ export default function Home() {
                     <span className="text-[#FE0000] font-bold">{formatter.format(product.price*0.8).replace('THB','')}</span><span className="text-[#FE0000] font-light text-xs"> THB</span>
                 </div>
                 <div className="mx-auto w-fit mb-4"><Product
+                artist_name={product.artist_name}
                 name={product.name}
                 image={product.picture}
                 price={product.price}
