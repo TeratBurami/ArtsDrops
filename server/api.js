@@ -85,6 +85,12 @@ app.get("/art_artist",(req,res)=>{
       });
 })
 
+app.get("/artist",(req,res)=>{
+  connection.query('SELECT * FROM Artist', function (error, results, fields) {
+      if (error) throw error;
+      res.json(results)
+    });
+})
 
 app.get("/art",(req,res)=>{
   var params=[];

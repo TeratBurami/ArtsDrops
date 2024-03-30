@@ -1,9 +1,27 @@
 import Nav from '../components/nav/nav';
 import Search from '../components/search';
 import Button from '../components/button/button';
+import { useState, useEffect } from "react";
+import Product from "../components/overlay/Product";
+import SearchIcon from "../assets/images/magnifying-glass-solid.svg";
 import Footer from '../components/footer'; 
+import Artist from '../components/overlay/Artist';
+import Card from "../components/card";
 
 export default function Artists() {
+
+    const [artists, setArtist] = useState<any[]>([]);
+
+    useEffect(() => {
+        fetch("http://localhost:3333/Artist")
+          .then(res => res.json())
+          .then(
+            (result) => {
+              setArtist(result);
+            }
+          )
+      }, [])
+
     return (
         <>
             <Nav></Nav>
@@ -21,11 +39,20 @@ export default function Artists() {
             </div>
 
             <div className='bg-gray-100 h-[1000px]'> {/*Note that 1000px will be remove and flex the height */}
-                <div className='flex justify-center'>
+                <div className='pt-8 flex justify-center'>
                     <Search></Search>
                 </div>
 
                 <hr className='m-10 ml-80 mr-80 bg-gray-300 h-0.5'/>
+
+                <div className='grid grid-cols-4 gap-16 mx-auto w-full max-w-screen-lg mt-10 mb-10'>
+                    
+                {artists.map(artist=>(
+                    <Card url={artist.pics} key={artist.artist_id} name={artist.artist_name} detail={artist.descrip} sold={artist.amount_sold} id={artist.artist_id}></Card>
+                ))}
+                    
+                </div>
+
             </div>
 
             <Footer></Footer>
