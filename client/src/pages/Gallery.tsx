@@ -92,8 +92,8 @@ export default function Gallery(this: any) {
   return (
     <>
       <Nav></Nav>
-      <div className="grid grid-cols-1 md:grid-cols-[30%_70%]">
-        <div className="bg-[#F2F2F2] shadow-md shadow-slate-500 h-[600px] pb-10 sticky top-0 ">
+      <div className="grid grid-cols-1 md:grid-cols-[30%_70%] bg-[#F2F2F2]">
+        <div className="bg-[#F2F2F2] h-[600px] pb-10 sticky top-0 ">
           <div className="mx-auto w-2/3 my-7">
             <input
               id="searchBar"
@@ -188,6 +188,7 @@ export default function Gallery(this: any) {
           </div>
         </div>
 
+        <div className="bg-white shadow-[inset_10px_0px_25px_-10px_rgba(0,0,0,0.3)]">
         <div className="ml-4 flex flex-wrap justify-start mt-6">
           {Art.map((art) => (
             <div className="mb-12 basis-1/4 w-[150px] h-fit hover:scale-110 transition ease-in delay-200">
@@ -205,6 +206,7 @@ export default function Gallery(this: any) {
               </p>
             </div>
           ))}
+        </div>
         </div>
       </div>
       <Footer></Footer>
