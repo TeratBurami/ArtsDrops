@@ -28,7 +28,8 @@ export default function Arttoys(){
                         <img className = "w-[500px] h-[500px] object-cover" src={arttoy.picture} alt=""/>
                         {/* <Button value = 'Details' className = 'normal absolute top-[90%] left-[17%] w-2/3 border-white text-white'></Button> */
                          <Product
-                         name={arttoy.name}
+                         name={arttoy.art_name}
+                         artist_name={arttoy.artist_name}
                          image={arttoy.picture}
                          price={arttoy.price}
                          type={arttoy.type}

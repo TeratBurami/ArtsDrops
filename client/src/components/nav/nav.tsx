@@ -1,5 +1,5 @@
 import Button from '../button/button';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Icon from '../../assets/images/palette-solid.svg';
 import { useState } from 'react';
 import Login from '../overlay/Login';
@@ -9,6 +9,7 @@ import Search from '../../assets/images/magnifying-glass-solid.svg';
 
 export default function Nav(this: any) {
     const location = useLocation();
+    const navigate = useNavigate();
 
 
     const [showLogin, setLogin] = useState(false);
@@ -48,21 +49,24 @@ export default function Nav(this: any) {
         setLogin(true);
     }
 
-    const [showProduct,setShowProduct]=useState(false);
-
+    const [data,setData]=useState('')
     const handleKeyPress = (e: { key: string }) => {
         if (e.key === "Enter") {
-          //show product ที่ชื่อตรงกัน but ยังคิดไม่ออกว่าจะทำ case ที่ไม่เจอยังไง
+            search()
         }
       };
     
+    const search=()=>{
+        if(data)navigate('/gallery',{state:data});
+    }
 
     return (
+        
         <div>
             <Login open={showLogin} close={closeLogin} loginToAdmin={loginToAdmin} loginToSignup={loginToSignup}></Login>
             <SignUp open={showSignup} close={closeSignup} signupToLogin={signupToLogin}></SignUp>
             <Admin open={showAdmin} close={closeAdmin}></Admin>
-
+            
             <div className="container-2xl border-solid border-b border-black pb-3 ">
                 <div className="flex flex-row">
                     <div className="website-logo-name flex ml-5 mt-3 w-full">
@@ -73,8 +77,8 @@ export default function Nav(this: any) {
                     <div className="search-signup-login flex container justify-end mt-4">
                         {/* <Search></Search> */}
                         <div className='hover:border-black rounded-full pl-3 w-fit h-3/4 p-2 flex border-[1.3px] border-[#C4C4C4] text-slate-600 focus-within:border-blue-600'>
-                            <input type="text" onKeyUp={handleKeyPress.bind(this)} placeholder='Search...' className='focus:outline-none'/>
-                            <img src={Search} alt="" className='cursor-pointer w-[15px]'/>
+                            <input onChange={(newData)=>setData(newData.target.value)} type="text" onKeyUp={handleKeyPress.bind(this)} placeholder='Search...' className='focus:outline-none'/>
+                            <img src={Search} alt="" className='cursor-pointer w-[15px]' onClick={search}/>
                         </div>
                         {/* <div className="search h-8 mr-14 w-80 border-solid border-black border rounded-full"></div> */}
                         <Button onclick={openSignup} value='Sign up' className='hover:bg-slate-300 normal h-8 ml-20 mr-3 text-xs font-bold'></Button>

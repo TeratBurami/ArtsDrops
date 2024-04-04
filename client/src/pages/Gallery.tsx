@@ -2,14 +2,12 @@ import Nav from "../components/nav/nav";
 import Button from "../components/button/button";
 import { useState, useEffect } from "react";
 import Product from "../components/overlay/Product";
-import SearchIcon from "../assets/images/magnifying-glass-solid.svg";
 import Footer from "../components/footer";
+import { useLocation, useNavigate } from "react-router-dom";
+
 
 export default function Gallery(this: any) {
-  const [checked, setChecked] = useState(false);
-  const handleCheck = () => {
-    setChecked(!checked);
-  };
+  const location = useLocation();
   const [Art, setArt] = useState<any[]>([]);
   const [price, setPrice] = useState<number>(10000);
 
@@ -39,22 +37,41 @@ export default function Gallery(this: any) {
   const [data, setData] = useState({
     search: "",
     type: "",
+    sort: "",
   });
 
+  const mediums = document.getElementsByName("type");
+  const sort = document.getElementsByName("sort");
+  const search = document.getElementById("searchBar");
+
   useEffect(() => {
-    fetch("http://localhost:3333/art")
+    
+    fetch(`http://localhost:3333/art?search=${location.state? location.state:''}`)
       .then((res) => res.json())
       .then((result) => {
         setArt(result);
       });
-  }, []);
-
+    }, []);
+    
+    
   const handleSubmit = async () => {
-    console.log(data.search, " | ", data.type, " | ", price);
+    window.history.replaceState({}, '')
+    let sorted='';
+    switch(data.sort){
+      case 'Lowest to Highest price':sorted='price ASC'; break;
+      case 'Highest to Lowest price':sorted='price DESC'; break;
+      case 'A-Z':sorted='art_name ASC'; break;
+      case 'Z-A':sorted='art_name DESC'; break;
+      default:sorted='error';
+    }
+    console.log(data.search, " | ", data.type, " | ", price,' | ',sorted);
+    console.log(data.sort);
+
     const response = await fetch(
-      `http://localhost:3333/art?search=${data.search}&type=${data.type}&price=${price}`
+      `http://localhost:3333/art?search=${data.search}&type=${data.type}&price=${price}&sort=${sorted}`
     );
     const art = await response.json();
+    console.log(art);
     setArt(art);
   };
 
@@ -65,14 +82,13 @@ export default function Gallery(this: any) {
 
   const handleKeyPress = (e: { key: string }) => {
     if (e.key === "Enter") {
+      window.history.replaceState({}, '')
       handleSubmit();
     }
   };
 
-  const mediums = document.getElementsByName("type");
-  const sort = document.getElementsByName("sort");
-  const search = document.getElementById("searchBar");
   const handleClear = () => {
+    window.history.replaceState({}, '')
     mediums.forEach((radio) => {
       radio.checked = false;
     });
@@ -81,7 +97,7 @@ export default function Gallery(this: any) {
     });
     search!.value = "";
     setPrice(100000);
-    setData({ type: "", search: "" });
+    setData({ type: "", search: "",sort:"" });
     fetch("http://localhost:3333/art")
       .then((res) => res.json())
       .then((result) => {
@@ -96,6 +112,7 @@ export default function Gallery(this: any) {
         <div className="bg-[#F2F2F2] h-[600px] pb-10 sticky top-0 ">
           <div className="mx-auto w-2/3 my-7">
             <input
+              defaultValue={location.state? location.state:''}
               id="searchBar"
               onKeyUp={handleKeyPress.bind(this)}
               onChange={(newData) =>
@@ -164,7 +181,9 @@ export default function Gallery(this: any) {
                 <div className="text-[#545454] text-xs font-semibold">
                   <input
                     name="sort"
-                    onClick={handleCheck}
+                    onChange={(newData) =>
+                      setData({ ...data, sort: newData.target.value })
+                    }
                     type="radio"
                     value={item.name}
                     className="w-2 h-2 mx-1 border-4 ml-3 mb-3 bg-gray-100 border-gray-300 rounded"

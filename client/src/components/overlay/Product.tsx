@@ -84,7 +84,7 @@ export default function Product({artist_name:artist_name,className:className,nam
         </div>
         <Button value={buttonValue} className={className} onclick={openShow} hidden={!button}></Button>
         <Dialog open={show} onClose={closeShow} PaperProps={{ sx: { borderRadius: "20px" } }}>
-          <div className="w-[500px] h-[530px] grid grid-rows-[45%_55%]">
+          <div className="w-[500px] h-[530px] grid grid-rows-[45%_55%] overflow-y-auto">
             <div className="relative">
                 <img src={image} alt={detail} className="absolute w-full h-full opacity-55 blur-[2px] object-cover" />
               <div className="absolute w-[160px] h-[188px] mx-[170px] my-[20px] border border-white border-4">
@@ -99,7 +99,7 @@ export default function Product({artist_name:artist_name,className:className,nam
               <p className="mt-2 w-3/4 mx-auto text-center overflow-auto h-[30px]">{detail}</p>
               <p className="mt-4 text-center">Price: {formatter.format(price).replace('THB','')} <span className="text-xs">THB</span></p>
               <div className="w-1/2 mx-auto mt-10">
-                <Button value="Buy now" className="submit w-full" onclick={showToBuy}>
+                <Button value="Buy now" className="submit w-full mb-4" onclick={showToBuy}>
               </Button></div>
             </div>
           </div>

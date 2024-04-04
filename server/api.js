@@ -94,12 +94,11 @@ app.get("/artist",(req,res)=>{
 
 app.get("/art",(req,res)=>{
   var params=[];
-  var sql='SELECT * FROM Art JOIN Artist ON Art.artist_id=Artist.artist_id ';
+  var sql='SELECT * FROM Art JOIN Artist ON Art.artist_id=Artist.artist_id';
   var type=req.query.type;
   var search=req.query.search;
   var price=req.query.price;
-  var sortedName=req.query.sortName;
-  var sortedPrice=req.query.sortPrice;
+  var sort=req.query.sort;
 
   if(search || type || price){
     sql+=' WHERE'
@@ -123,10 +122,16 @@ app.get("/art",(req,res)=>{
     params.push(price);
   }
 
-  
+  if(sort){
+    sort=sort.split(' ');
+    if(sort!='error'){
+      sql+=` ORDER BY ${sort[0]} ${sort[1]}`
+    }
+  }
 
+  
+  
   connection.execute(sql,params, function (error, results, fields) {
-      
       if (error) throw error;
       res.json(results)
     });
