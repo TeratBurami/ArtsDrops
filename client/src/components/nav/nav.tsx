@@ -1,7 +1,7 @@
 import Button from '../button/button';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Icon from '../../assets/images/palette-solid.svg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Login from '../overlay/Login';
 import SignUp from '../overlay/SignUp';
 import Admin from '../overlay/Admin';
@@ -34,39 +34,67 @@ export default function Nav(this: any) {
         setAdmin(false);
     }
 
-    const loginToSignup=()=>{
+    const loginToSignup = () => {
         setLogin(false);
         setSignup(true);
     }
 
-    const loginToAdmin=()=>{
+    const loginToAdmin = () => {
         setLogin(false);
         setAdmin(true);
     }
 
-    const signupToLogin=()=>{
+    const signupToLogin = () => {
         setSignup(false);
         setLogin(true);
     }
 
-    const [data,setData]=useState('')
+    const [data, setData] = useState('')
     const handleKeyPress = (e: { key: string }) => {
         if (e.key === "Enter") {
             search()
         }
-      };
-    
-    const search=()=>{
-        if(data)navigate('/gallery',{state:data});
+    };
+
+    const search = () => {
+        if (data) navigate('/gallery', { state: data });
     }
 
+    const [isLogin,setIsLogin]=useState(false)
+
+    useEffect(() => {
+        const TOKEN=localStorage.getItem('TOKEN');
+        fetch('http://localhost:3333/auth', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization':'Bearer '+TOKEN
+            },
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status == 'success') {
+                    // alert('Auth success')
+                    setIsLogin(true)
+                }
+                else {
+                    // alert('Auth failed')
+                    localStorage.removeItem('TOKEN')
+                }
+            }
+            )
+            .catch((err) => {
+                console.error('Error ', err)
+            })
+    }, [])
+
     return (
-        
+
         <div>
             <Login open={showLogin} close={closeLogin} loginToAdmin={loginToAdmin} loginToSignup={loginToSignup}></Login>
             <SignUp open={showSignup} close={closeSignup} signupToLogin={signupToLogin}></SignUp>
             <Admin open={showAdmin} close={closeAdmin}></Admin>
-            
+
             <div className="container-2xl border-solid border-b border-black pb-3 ">
                 <div className="flex flex-row">
                     <div className="website-logo-name flex ml-5 mt-3 w-full">
@@ -77,12 +105,17 @@ export default function Nav(this: any) {
                     <div className="search-signup-login flex container justify-end mt-4">
                         {/* <Search></Search> */}
                         <div className='hover:border-black rounded-full pl-3 w-fit h-3/4 p-2 flex border-[1.3px] border-[#C4C4C4] text-slate-600 focus-within:border-blue-600'>
-                            <input onChange={(newData)=>setData(newData.target.value)} type="text" onKeyUp={handleKeyPress.bind(this)} placeholder='Search...' className='focus:outline-none'/>
-                            <img src={Search} alt="" className='cursor-pointer w-[15px]' onClick={search}/>
+                            <input onChange={(newData) => setData(newData.target.value)} type="text" onKeyUp={handleKeyPress.bind(this)} placeholder='Search...' className='focus:outline-none' />
+                            <img src={Search} alt="" className='cursor-pointer w-[15px]' onClick={search} />
                         </div>
                         {/* <div className="search h-8 mr-14 w-80 border-solid border-black border rounded-full"></div> */}
-                        <Button onclick={openSignup} value='Sign up' className='hover:bg-slate-300 normal h-8 ml-20 mr-3 text-xs font-bold'></Button>
-                        <Button onclick={openLogin} value='Login' className='hover:bg-slate-300 hover:text-black normal h-8 bg-black text-white text-xs font-bold'></Button>
+                        <div hidden={isLogin}>
+                            <Button onclick={openSignup} value='Sign up' className='hover:bg-slate-300 normal h-8 ml-20 mr-3 text-xs font-bold'></Button>
+                            <Button onclick={openLogin} value='Login' className='hover:bg-slate-300 hover:text-black normal h-8 bg-black text-white text-xs font-bold'></Button>
+                        </div>
+                        <div hidden={!isLogin} className='w-fit p-2 border border-1-black rounded-lg ml-32 mr-12'>
+                            <span className='font-semibold'>Lorem ipsum</span>
+                        </div>
                     </div>
                 </div>
                 <div className="w-3/4 h-px bg-slate-400 mt-5 ml-5"></div>

@@ -16,6 +16,33 @@ export default function AccountManage() {
         )
     }, [])
 
+    useEffect(() => {
+        const TOKEN=localStorage.getItem('TOKEN');
+        fetch('http://localhost:3333/auth', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization':'Bearer '+TOKEN
+            },
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status == 'success') {
+                    // alert('Auth success')
+                    // setIsLogin(true)
+                    //continue here
+                }
+                else {
+                    // alert('Auth failed')
+                    localStorage.removeItem('TOKEN')
+                }
+            }
+            )
+            .catch((err) => {
+                console.error('Error ', err)
+            })
+    }, [])
+
     const switchCase=(e: number)=>{
         switch(e){
             case 0:return 'Super Admin'; break;

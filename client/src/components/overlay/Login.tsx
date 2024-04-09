@@ -5,6 +5,7 @@ import Email from '../../assets/images/envelope-solid.svg';
 import Close from '../../assets/images/xmark-solid.svg';
 import Admin from '../../assets/images/user-tie-solid.svg';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface Props{
     open:boolean;
@@ -14,13 +15,14 @@ interface Props{
 }
 
 export default function Login({open:open,close:close,loginToSignup:loginToSignup,loginToAdmin:loginToAdmin}:Props){
-
+    const navigate=useNavigate();
     const [data,setData]=useState({
         email:'',
         password:'',
     })
 
     const handleSubmit=()=>{
+        console.log(data)
         fetch('http://localhost:3333/login',{
             method:'POST',
             headers:{
@@ -28,14 +30,24 @@ export default function Login({open:open,close:close,loginToSignup:loginToSignup
             },
             body: JSON.stringify(data),
         })
-        .then(res=>{res.json(); console.log('Test')})
-        .then(data=>{
-            console.log('Success',data);
-        })
+        .then(res=>res.json())
+        .then(data=>
+           {if(data.status=='success'){
+            localStorage.setItem('TOKEN',data.TOKEN);
+            // navigate('/');
+            setData({email:'',password:''})
+            close()
+            alert('Login success')
+           }
+           else{
+            setData({email:'',password:''})
+            alert('Login failed')
+           }}
+        )
         .catch((err)=>{
             console.error('Error ',err)
         })
-        close();
+        
 
     }
 
