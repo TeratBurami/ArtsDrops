@@ -24,7 +24,7 @@ export default function DeleteConfirm({ className: className,art_id:art_id}: Pro
 
 
     const handleSubmit=()=>{
-        fetch('http://localhost:3333/delProduct',{
+        fetch('http://localhost:3333/art',{
             method:'DELETE',
             headers:{
                 'Content-Type':'application/json',

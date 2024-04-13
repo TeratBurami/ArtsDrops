@@ -39,7 +39,7 @@ export default function AddProduct({ className: className }: Props) {
     }
 
     const handleSubmit=()=>{
-        fetch('http://localhost:3333/addProduct',{
+        fetch('http://localhost:3333/art',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json',

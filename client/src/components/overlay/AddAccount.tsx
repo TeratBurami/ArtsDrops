@@ -44,7 +44,7 @@ export default function AddProduct({ className: className }: Props) {
 
     const handleSubmit=()=>{
         // console.log(data)
-        fetch('http://localhost:3333/signup',{
+        fetch('http://localhost:3333/account',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json',

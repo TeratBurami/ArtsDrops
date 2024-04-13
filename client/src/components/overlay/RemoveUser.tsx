@@ -24,7 +24,7 @@ export default function RemoveUser({ className: className,account_id:account_id}
 
 
     const handleSubmit=()=>{
-        fetch('http://localhost:3333/delAccount',{
+        fetch('http://localhost:3333/account',{
             method:'DELETE',
             headers:{
                 'Content-Type':'application/json',

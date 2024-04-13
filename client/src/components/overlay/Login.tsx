@@ -5,7 +5,6 @@ import Email from '../../assets/images/envelope-solid.svg';
 import Close from '../../assets/images/xmark-solid.svg';
 import Admin from '../../assets/images/user-tie-solid.svg';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 interface Props{
     open:boolean;
@@ -15,7 +14,6 @@ interface Props{
 }
 
 export default function Login({open:open,close:close,loginToSignup:loginToSignup,loginToAdmin:loginToAdmin}:Props){
-    const navigate=useNavigate();
     const [data,setData]=useState({
         email:'',
         password:'',
@@ -34,10 +32,10 @@ export default function Login({open:open,close:close,loginToSignup:loginToSignup
         .then(data=>
            {if(data.status=='success'){
             localStorage.setItem('TOKEN',data.TOKEN);
-            // navigate('/');
             setData({email:'',password:''})
             close()
             alert('Login success')
+            location.reload()
            }
            else{
             setData({email:'',password:''})

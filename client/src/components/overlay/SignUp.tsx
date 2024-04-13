@@ -38,7 +38,7 @@ export default function SignUp({ open: open, close: close }: Props) {
 
     const handleSubmit=()=>{
         console.log(data)
-        fetch('http://localhost:3333/signup',{
+        fetch('http://localhost:3333/account',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json',

@@ -62,8 +62,8 @@ export default function EditUser({ user_role: user_role, className: className, a
 
     const handleSubmit = () => {
         // console.log(data)
-        fetch('http://localhost:3333/editUser', {
-            method: 'POST',
+        fetch('http://localhost:3333/account', {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },

@@ -47,8 +47,8 @@ export default function EditProduct({ className: className,descript:descript,art
     }
 
     const handleSubmit=()=>{
-        fetch('http://localhost:3333/editProduct',{
-            method:'POST',
+        fetch('http://localhost:3333/art',{
+            method:'PUT',
             headers:{
                 'Content-Type':'application/json',
             },

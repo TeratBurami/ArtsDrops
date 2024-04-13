@@ -4,13 +4,13 @@ import "./table.css";
 import { useEffect, useState } from "react";
 import EditProduct from "../../components/overlay/EditProduct";
 import AddProduct from "../../components/overlay/AddProduct";
-import Delete from '../../components/overlay/DeleteConfirm';
+import Delete from '../../components/overlay/DeleteProduct';
 
 export default function ProdManage() {
   const [products, setProduct] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3333/art_artist")
+    fetch("http://localhost:3333/art")
       .then((res) => res.json())
       .then((result) => {
         setProduct(result);
