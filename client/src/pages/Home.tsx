@@ -9,9 +9,14 @@ import {useState,useEffect} from 'react'
 import Product from '../components/overlay/Product'
 
 export default function Home() {
+
+  //state of storing data (art)
   const [products, setProduct] = useState<any[]>([]);
+
+  //state of storing data (artist)
   const [artists, setArtist] = useState<any[]>([]);
 
+  //fetch for only 4 arts
   useEffect(() => {
     fetch("http://localhost:3333/only_4")
       .then(res => res.json())
@@ -22,6 +27,7 @@ export default function Home() {
       )
   }, [])
 
+  //fetch for only 4 popular artists
   useEffect(() => {
     fetch("http://localhost:3333/pop_artist")
       .then(res => res.json())
@@ -32,6 +38,7 @@ export default function Home() {
       )
   }, [])
 
+  //currency formatter
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'THB',

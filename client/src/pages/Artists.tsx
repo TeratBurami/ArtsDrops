@@ -6,11 +6,13 @@ import Card from "../components/card";
 
 export default function Artists(this: any) {
 
+    //state of storing data
     const [artists, setArtist] = useState<any[]>([]);
 
+    //state of search
     const [search, setSearch] = useState('')
 
-
+    //get all artists when start the page
     useEffect(() => {
         fetch(`http://localhost:3333/artist`)
             .then(res => res.json())
@@ -21,6 +23,7 @@ export default function Artists(this: any) {
             )
     }, [])
 
+    //search artist by name from search bar
     const handleSubmit = () => {
         fetch(`http://localhost:3333/artist?search=${search}`)
             .then(res => res.json())
@@ -31,6 +34,7 @@ export default function Artists(this: any) {
             )
     }
 
+    //handle press enter to search
     const handleKeyPress = (e: { key: string }) => {
         if (e.key === "Enter") {
           handleSubmit();

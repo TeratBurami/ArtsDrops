@@ -10,6 +10,7 @@ import PaymentLog from './pages/admin pages/PaymentLog';
 
 export default function App() {
   return (
+    //create routes for all pages
     <>  
       <Router>
         <Routes>

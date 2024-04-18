@@ -6,8 +6,10 @@ import Product from '../components/overlay/Product';
 
 export default function Arttoys(){
 
+    //state of storing data
     const [arttoys, setarttoy] = useState<any[]>([])
 
+    //get all art toys when start the page
     useEffect(() => {
         fetch("http://localhost:3333/art_toy")
           .then(res => res.json())

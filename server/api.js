@@ -47,9 +47,12 @@ app.get('/payment_log', (req, res) => {
   let sql='SELECT * FROM Buy JOIN Art ON Buy.art_id = Art.art_id JOIN Account ON Buy.account_id = Account.account_id';
   let search=req.query.search;
   search? sql+=` 
-  WHERE art_id LIKE \'%${search}%\'`
-  :sql+=''
-  console.log(sql)
+  WHERE paid_id LIKE \'%${search}%\'
+  OR art_name LIKE \'%${search}%\'
+  OR Art.art_id LIKE \'%${search}%\'
+  OR Account.account_id LIKE \'%${search}%\'
+  OR Art.price<=\'${search}\'
+  `:sql+=''
   connection.query(sql, function (err, results, fields) {
     if (err) throw err;
     res.json(results);

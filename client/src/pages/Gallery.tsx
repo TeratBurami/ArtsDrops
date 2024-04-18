@@ -8,13 +8,19 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Gallery(this: any) {
   const location = useLocation();
+
+  //state of storing data
   const [Art, setArt] = useState<any[]>([]);
+
+  //state of handling price input
   const [price, setPrice] = useState<number>(10000);
 
+  //handle the change of price
   const handlePriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPrice(parseInt(event.target.value));
   };
 
+  //label for check box
   const checkBox = [
     { name: "Drawing" },
     { name: "Painting" },
@@ -27,6 +33,7 @@ export default function Gallery(this: any) {
     { name: "NFTs" },
   ];
 
+  //label for radio
   const radio = [
     { name: "Lowest to Highest price" },
     { name: "Highest to Lowest price" },
@@ -34,6 +41,7 @@ export default function Gallery(this: any) {
     { name: "Z-A" },
   ];
 
+  //set data as a blank
   const [data, setData] = useState({
     search: "",
     type: "",
@@ -44,6 +52,7 @@ export default function Gallery(this: any) {
   const sort = document.getElementsByName("sort");
   const search = document.getElementById("searchBar");
 
+  //get arts when start the page
   useEffect(() => {
     
     fetch(`http://localhost:3333/art?search=${location.state? location.state:''}`)
@@ -54,6 +63,7 @@ export default function Gallery(this: any) {
     }, []);
     
     
+  //search art from input data
   const handleSubmit = async () => {
     window.history.replaceState({}, '')
     let sorted='';
@@ -75,11 +85,13 @@ export default function Gallery(this: any) {
     setArt(art);
   };
 
+  //currency formatter
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "THB",
   });
 
+  //handle press enter to search
   const handleKeyPress = (e: { key: string }) => {
     if (e.key === "Enter") {
       window.history.replaceState({}, '')
@@ -87,6 +99,7 @@ export default function Gallery(this: any) {
     }
   };
 
+  //handle clear button
   const handleClear = () => {
     window.history.replaceState({}, '')
     mediums.forEach((radio) => {

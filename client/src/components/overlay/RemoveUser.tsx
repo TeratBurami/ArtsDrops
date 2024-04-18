@@ -25,6 +25,7 @@ export default function RemoveUser({ className: className,account_id:account_id}
     }
 
 
+    //when press delete button, it will delete the account from the database
     const handleSubmit=()=>{
         fetch('http://localhost:3333/account',{
             method:'DELETE',

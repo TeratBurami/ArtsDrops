@@ -50,7 +50,7 @@ export default function ProdManage(this: any) {
 
       <div className="ml-[12rem] mr-6 p-10">
         <h1 className="text-2xl font-semibold pb-4">Product Management</h1>
-        <div className="rounded-full bg-slate-200 h-14 flex justify-between items-center">
+        <div className="rounded-full bg-slate-200 h-14 flex pr-2 justify-between items-center">
           <AddProduct className="w-6 ml-6"></AddProduct>
           <div className='hover:border-black rounded-full w-1/2 pl-3 h-3/4 p-2 flex border-[1.3px] border-[#C4C4C4] text-slate-600 focus-within:border-blue-600'>
             <input onKeyUp={handleKeyPress.bind(this)} onChange={(newData) => setSearch(newData.target.value)} id='search' type="text" placeholder='Search...' className='pl-4 focus:outline-none bg-transparent w-full' />
