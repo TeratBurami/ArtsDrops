@@ -16,6 +16,7 @@ interface Props {
 
 export default function EditUser({ user_role: user_role, className: className, account_id: account_id, username: username, email: email, phone_no: phone_no, DOB: DOB }: Props) {
 
+    //state of showing the EditUser pop-up page
     const [show, setShow] = useState(false)
     const openShow = () => {
         setShow(true);
@@ -24,7 +25,7 @@ export default function EditUser({ user_role: user_role, className: className, a
         setShow(false);
     }
     
-
+    //set the data as the old data
     const [data, setData] = useState({
         username: username,
         email: email,
@@ -34,8 +35,7 @@ export default function EditUser({ user_role: user_role, className: className, a
         account_id:account_id
     })
 
-    // console.log(data.phone_no,data.DOB)
-
+    //transfer the string of role to priority number
     const RoleToNum = (e: string) => {
         switch (e) {
             case 'Super Admin': return 0; break;
@@ -45,6 +45,7 @@ export default function EditUser({ user_role: user_role, className: className, a
         }
     }
 
+    //transfer the priority number of role to string
     const NumToRole = (e: number) => {
         switch (e) {
             case 0: return 'Super Admin'; break;
@@ -54,14 +55,15 @@ export default function EditUser({ user_role: user_role, className: className, a
         }
     }
 
+    //handle the changes of the new input
     const [role, setRole] = useState(NumToRole(data.user_role))
     const handleChange = (event: SelectChangeEvent) => {
         setRole(event.target.value as string);
         setData({ ...data, user_role: RoleToNum(event.target.value) });
     };
 
+    //when press edit button, it will edit the account from database
     const handleSubmit = () => {
-        // console.log(data)
         fetch('http://localhost:3333/account', {
             method: 'PUT',
             headers: {

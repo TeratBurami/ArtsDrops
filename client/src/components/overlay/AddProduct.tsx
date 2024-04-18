@@ -1,5 +1,5 @@
 import Icon from '../../assets/images/cart-plus-solid.svg'
-import { FormEvent, useState } from 'react'
+import { useState } from 'react'
 import { Dialog, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField } from "@mui/material";
 import Button from '../button/button'
 
@@ -8,7 +8,8 @@ interface Props {
 }
 
 export default function AddProduct({ className: className }: Props) {
-    
+
+    //state of showing the AddProduct pop-up page
     const [show, setShow] = useState(false)
     const openShow = () => {
         setShow(true);
@@ -16,47 +17,54 @@ export default function AddProduct({ className: className }: Props) {
     const closeShow = () => {
         setShow(false);
     }
-    
-    const [data,setData]=useState({
-        art_name:'',
-        type:'',
-        price:'',
-        descript:'',
-        picture:'',
-        artist_id:'',
+
+    //set the default data as a blank
+    const [data, setData] = useState({
+        art_name: '',
+        type: '',
+        price: '',
+        descript: '',
+        picture: '',
+        artist_id: '',
     })
 
+    //handle the changes of the form
+    //change the data and the type of art from the form
     const [type, setType] = useState('')
     const handleChange = (event: SelectChangeEvent) => {
         setType(event.target.value as string);
-        setData({...data,type:event.target.value as string});
+        setData({ ...data, type: event.target.value as string });
         console.log(type)
     };
 
+    //handle the change of example image in the form
+    //when admin paste the URL of image into picture input bar,
+    //it will automatically update and show the art picture
     const [imgData, setImg] = useState('')
     const handleImg = (event: SelectChangeEvent) => {
         setImg(event.target.value as string);
     }
 
-    const handleSubmit=()=>{
-        fetch('http://localhost:3333/art',{
-            method:'POST',
-            headers:{
-                'Content-Type':'application/json',
+    //when press add button, it will add the product to the database as a JSON
+    const handleSubmit = () => {
+        fetch('http://localhost:3333/art', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
         })
-        .then(res=>res.json())
-        .then(data=>{
-            console.log('Success',data);
-        })
-        .catch((err)=>{
-            console.error('Error ',err)
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('Success', data);
+            })
+            .catch((err) => {
+                console.error('Error ', err)
+            })
         closeShow();
         location.reload()
     }
-    
+
 
 
 
@@ -71,15 +79,15 @@ export default function AddProduct({ className: className }: Props) {
                         <div className="grid grid-rows-[20%_50%_30%]">
                             <h1 className='font-bold text-2xl text-center h-fit mt-4'>Add Product</h1>
                             <div className="bg-slate-400 mx-auto w-[140px] h-[160px] rounded">
-                                <img className='w-full h-full rounded object-cover' src={imgData} hidden={imgData==''} alt="Wrong URL Please try again" />
+                                <img className='w-full h-full rounded object-cover' src={imgData} hidden={imgData == ''} alt="Wrong URL Please try again" />
                             </div>
                             <div className="mx-auto mt-6">
-                                <TextField onChangeCapture={(newData)=>setData({...data,picture:newData.target.value})} label="Picture" name="picture" id="picture" variant="outlined" InputProps={{ sx: { borderRadius: 5, height: 50, width: 170 } }} onChange={handleImg} />
+                                <TextField onChangeCapture={(newData) => setData({ ...data, picture: newData.target.value })} label="Picture" name="picture" id="picture" variant="outlined" InputProps={{ sx: { borderRadius: 5, height: 50, width: 170 } }} onChange={handleImg} />
                             </div>
                         </div>
                         <div className="grid grid-rows-4 mt-5">
 
-                            <TextField onChangeCapture={(newData)=>setData({...data,art_name:newData.target.value})} label="Name" variant="outlined" InputProps={{ sx: { borderRadius: 5, height: 50, width: 170 } }} />
+                            <TextField onChangeCapture={(newData) => setData({ ...data, art_name: newData.target.value })} label="Name" variant="outlined" InputProps={{ sx: { borderRadius: 5, height: 50, width: 170 } }} />
 
                             <FormControl fullWidth>
                                 <InputLabel id="demo-simple-select-label">Type</InputLabel>
@@ -89,7 +97,7 @@ export default function AddProduct({ className: className }: Props) {
                                     value={type}
                                     label="Type"
                                     onChange={handleChange}
-                                    sx={{ borderRadius: 5, height: 50, width:170 }}
+                                    sx={{ borderRadius: 5, height: 50, width: 170 }}
 
                                 >
                                     <MenuItem value={'Drawing'}>Drawing</MenuItem>
@@ -103,13 +111,13 @@ export default function AddProduct({ className: className }: Props) {
                                     <MenuItem value={'NFTs'}>NFTs</MenuItem>
                                 </Select>
                             </FormControl>
-                            <TextField onChangeCapture={(newData)=>setData({...data,price:newData.target.value})} label="Price" variant="outlined" InputProps={{ sx: { borderRadius: 5, height: 50, width: 170 } }} />
-                            <TextField onChangeCapture={(newData)=>setData({...data,artist_id:newData.target.value})} label="Artist ID" variant="outlined" InputProps={{ sx: { borderRadius: 5, height: 50, width: 170 } }} />
+                            <TextField onChangeCapture={(newData) => setData({ ...data, price: newData.target.value })} label="Price" variant="outlined" InputProps={{ sx: { borderRadius: 5, height: 50, width: 170 } }} />
+                            <TextField onChangeCapture={(newData) => setData({ ...data, artist_id: newData.target.value })} label="Artist ID" variant="outlined" InputProps={{ sx: { borderRadius: 5, height: 50, width: 170 } }} />
                         </div>
 
 
                     </div>
-                        <TextField onChangeCapture={(newData)=>setData({...data,detail:newData.target.value})} label="Detail" variant="outlined" InputProps={{ sx: { borderRadius: 5, height: 50, width: '100%'} }} />
+                    <TextField onChangeCapture={(newData) => setData({ ...data, detail: newData.target.value })} label="Detail" variant="outlined" InputProps={{ sx: { borderRadius: 5, height: 50, width: '100%' } }} />
 
                     <Button value='Add' className='submit w-2/3 mx-auto' onclick={handleSubmit}></Button>
                 </div>

@@ -17,6 +17,7 @@ interface Props {
 
 export default function EditProduct({ className: className,descript:descript,art_id:art_id,art_name:art_name,art_type:art_type,price:price,picture:picture,artist_id:artist_id }: Props) {
     
+    //state of showing the EditProduct pop-up page
     const [show, setShow] = useState(false)
     const openShow = () => {
         setShow(true);
@@ -25,6 +26,7 @@ export default function EditProduct({ className: className,descript:descript,art
         setShow(false);
     }
     
+    //set the data as the old data
     const [data,setData]=useState({
         art_name:art_name,
         art_id:art_id,
@@ -35,17 +37,22 @@ export default function EditProduct({ className: className,descript:descript,art
         artist_id:artist_id,
     })
 
+    //handle the changes of the new input
     const [type, setType] = useState(data.type)
     const handleChange = (event: SelectChangeEvent) => {
         setType(event.target.value as string);
         setData({...data,type:event.target.value as string});
     };
 
+    //handle the change of example image in the form
+    //when admin paste the URL of image into picture input bar,
+    //it will automatically update and show the art picture
     const [imgData, setImg] = useState(data.picture)
     const handleImg = (event: SelectChangeEvent) => {
         setImg(event.target.value as string);
     }
 
+    //when press edit button, it will edit the product from database
     const handleSubmit=()=>{
         fetch('http://localhost:3333/art',{
             method:'PUT',

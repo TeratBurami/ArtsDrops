@@ -10,6 +10,7 @@ interface Props {
 
 export default function RemoveUser({ className: className,account_id:account_id}: Props) {
     
+    //state of showing the RemoveUser confirmation pop-up page
     const [show, setShow] = useState(false)
     const openShow = () => {
         setShow(true);
@@ -18,6 +19,7 @@ export default function RemoveUser({ className: className,account_id:account_id}
         setShow(false);
     }
 
+    //set account_id which use for delete
     const data={
         account_id:account_id
     }

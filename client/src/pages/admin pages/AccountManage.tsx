@@ -1,53 +1,49 @@
 import Nav from '../../components/admin/nav'
-import Search from '../../components/search'
 import './table.css'
 import { useEffect, useState } from 'react'
 import RemoveUser from '../../components/overlay/RemoveUser'
 import AddAccount from '../../components/overlay/AddAccount'
 import EditUser from '../../components/overlay/EditUser'
+import SearchIcon from '../../assets/images/magnifying-glass-solid.svg'
 
-export default function AccountManage() {
+export default function AccountManage(this: any) {
 
+    //state of the data
     const [Account, setAccount] = useState<any[]>([])
+    //state of search data
+    const [search,setSearch]=useState('')
 
+    //get the data and set it to the state
     useEffect(() => {
-        fetch('http://localhost:3333/account').then(res => res.json()).then(
-            result => setAccount(result)
-        )
-    }, [])
-
-    useEffect(() => {
-        const TOKEN=localStorage.getItem('TOKEN');
-        fetch('http://localhost:3333/auth', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization':'Bearer '+TOKEN
-            },
-        })
+        fetch('http://localhost:3333/account')
             .then(res => res.json())
-            .then(data => {
-                if (data.status == 'success') {
-                    // alert('Auth success')
-                    // setIsLogin(true)
-                    //continue here
-                }
-                else {
-                    // alert('Auth failed')
-                    localStorage.removeItem('TOKEN')
-                }
-            }
+            .then(
+                result => setAccount(result)
             )
-            .catch((err) => {
-                console.error('Error ', err)
-            })
     }, [])
 
-    const switchCase=(e: number)=>{
-        switch(e){
-            case 0:return 'Super Admin'; break;
-            case 1:return 'Admin'; break;
-            case 2:return 'User'; break;
+    //get the data by the text in the search bar
+    const handleSubmit=()=>{
+        fetch(`http://localhost:3333/account?search=${search}`)
+            .then(res => res.json())
+            .then(
+                result => setAccount(result)
+            )
+    }
+
+    //handle press enter to search
+    const handleKeyPress = (e: { key: string }) => {
+        if (e.key === "Enter") {
+          handleSubmit();
+        }
+      };
+
+    //transfer the priority number to string
+    const switchCase = (e: number) => {
+        switch (e) {
+            case 0: return 'Super Admin'; break;
+            case 1: return 'Admin'; break;
+            case 2: return 'User'; break;
         }
     }
 
@@ -58,11 +54,12 @@ export default function AccountManage() {
 
             <div className='ml-[12rem] mr-6 p-10'>
                 <h1 className='font-semibold text-2xl pb-4'>Account Management</h1>
-                <div className='rounded-full bg-slate-200 h-14 flex justify-between items-center'>
+                <div className='rounded-full bg-slate-200 h-14 flex pr-2 justify-between items-center'>
                     {/* <img src={AddUser} className='w-6 ml-10'></img> */}
                     <AddAccount className='w-6 ml-6'></AddAccount>
-                    <div className='mr-2'>
-                        <Search></Search>
+                    <div className='hover:border-black rounded-full w-1/2 pl-3 h-3/4 p-2 flex border-[1.3px] border-[#C4C4C4] text-slate-600 focus-within:border-blue-600'>
+                        <input onKeyUp={handleKeyPress.bind(this)} onChange={(newData)=>setSearch(newData.target.value)} id='search' type="text" placeholder='Search...' className='pl-4 focus:outline-none bg-transparent w-full' />
+                        <img onClick={handleSubmit} src={SearchIcon} alt="" className='cursor-pointer w-[15px]' />
                     </div>
                 </div>
                 <table className='mt-10'>

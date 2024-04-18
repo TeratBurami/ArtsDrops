@@ -1,3 +1,5 @@
+/* modify the website scroll bar */
+
 ::-webkit-scrollbar {
     width: 20px;
 }

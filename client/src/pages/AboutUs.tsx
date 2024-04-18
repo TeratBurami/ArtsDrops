@@ -4,13 +4,16 @@ import Phoom from '../assets/images/Phoom.png'
 import Sea from '../assets/images/Sea.jpg'
 import Guy from '../assets/images/guy.png'
 import Keep from '../assets/images/keep.jpg'
+import Beam from '../assets/images/beam.jpg'
 import { useState } from 'react';
 import Button from '../components/button/button'
 
 
 export default function AboutUs() {
+    //set memes data
     const [memes, setMemes] = useState<any[]>([])
 
+    //get memes from external webservice
     const joke = async () => {
         const url = 'https://programming-memes-images.p.rapidapi.com/v1/memes';
         const options = {
@@ -34,70 +37,69 @@ export default function AboutUs() {
     return (
         <>
             <Nav></Nav>
-            <ul className='mt-20 mb-20'>
+            <ul className='p-14'>
                 <li>
-                    {/*รอรูป คุณบีม!!! */}
-                    <div className="flex w-fit mx-auto items-center">
-                        <img src='' alt="" className="mr-40 p-3 shadow-md shadow-slate-400 mb-3 w-60" />
-                        <div className='w-[1000px] h-[200px] shadow-md p-3 flex items-center justify-center'>
+                    <div className="mx-24 grid grid-cols-[30%_70%] items-center">
+                        <img src={Beam} alt="Beam" className="bg-slate-100 p-3 shadow-md shadow-slate-500 mb-3 w-[220px]" />
+                        <div className='bg-slate-100 w-full h-[200px] shadow-slate-500 shadow-md p-3 flex items-center justify-center'>
                             <p className='font-semibold'>"The more I think it over, the more I feel that there is nothing more truly artistic than to love people."
-                                <h2 className='font-light text-right mt-1'>- Terat Burami </h2>
+                                <h2 className='font-light text-right mt-1'>- Terat Burami -</h2>
                             </p>
                         </div>
                     </div>
                 </li>
 
                 {/*Line*/}
-                <li className='text-center'><hr className='m-10 ml-80 mr-80 bg-gray-300 h-0.5' /></li>
+                <li className='text-center'><hr className='mx-auto w-3/4 my-20 bg-gray-300 h-0.5' /></li>
 
                 <li>
-                    <div className="flex w-fit mx-auto items-center">
-                        <div className='w-[1000px] h-[200px] shadow-md p-3 flex items-center justify-center'>
+                    <div className="mx-24 grid grid-cols-[70%_30%] gap-14 items-center">
+                        <div className='bg-slate-100 w-full h-[200px] shadow-slate-500 shadow-md p-3 flex items-center justify-center'>
                             <p className='font-semibold'>"Roses are red, Violets are blue, White wine cost less, than dinner for two"
-                                <h2 className='font-light mt-1 text-right'>- Pathompum Jirakarpaisan</h2>
+                                <h2 className='font-light text-right mt-1'>- Pathompum Jirakarpaisan -</h2>
                             </p>
                         </div>
-                        <img src={Phoom} alt="" className="ml-40 p-3 shadow-md shadow-slate-400 mb-3 w-60" />
+                        <img src={Phoom} alt="Phoom" className="bg-slate-100 p-3 shadow-md shadow-slate-500 mb-3 w-[220px]" />
                     </div>
                 </li>
 
                 {/*Line*/}
-                <li className='text-center'> <hr className='m-10 ml-80 mr-80 bg-gray-300 h-0.5' /> </li>
+                <li className='text-center'> <hr className='mx-auto w-3/4 my-20 bg-gray-300 h-0.5' /> </li>
 
                 <li>
-                    <div className="flex w-fit mx-auto items-center">
-                        <img src={Guy} alt="" className="mr-40 p-3 shadow-md shadow-slate-400 mb-3 w-60" />
-                        <div className='w-[1000px] h-[200px] shadow-md p-3 flex items-center justify-center'>
+                    <div className="mx-24 grid grid-cols-[30%_70%] items-center">
+                        <img src={Guy} alt="Guy" className="bg-slate-100 p-3 shadow-md shadow-slate-500 mb-3 w-[220px]" />
+                        <div className='bg-slate-100 w-full h-[200px] shadow-slate-500 shadow-md p-3 flex items-center justify-center'>
                             <p className='font-semibold'>"It’s not what you look at that matters, it’s what you see."
-                                <h2 className='font-light mt-1 text-right'>- Patsawat Kittipunthopast</h2>
+                                <h2 className='font-light text-right mt-1'>- Patsawat Kittipunthopast -</h2>
                             </p>
                         </div>
                     </div>
                 </li>
 
                 {/*Line*/}
-                <li className='text-center'> <hr className='m-10 ml-80 mr-80 bg-gray-300 h-0.5' /> </li>
+                <li className='text-center'> <hr className='mx-auto w-3/4 my-20 bg-gray-300 h-0.5' /> </li>
 
                 <li>
-                    <div className="flex w-fit mx-auto items-center">
-                        <div className='w-[1000px] h-[200px] shadow-md p-3 flex items-center justify-center'>
+                    <div className="mx-24 grid grid-cols-[70%_30%] gap-14 items-center">
+                        <div className='bg-slate-100 w-full h-[200px] shadow-slate-500 shadow-md p-3 flex items-center justify-center'>
                             <p className='font-semibold'>"Live your life and forget your age."
-                                <h2 className='font-light mt-1 text-right'>- Athichanan Rodusa</h2>
+                                <h2 className='font-light text-right mt-1'>- Athichanan Rodusa -</h2>
                             </p>
                         </div>
-                        <img src={Keep} alt="" className="ml-40 p-3 shadow-md shadow-slate-400 mb-3 w-60" />
+                        <img src={Keep} alt="Keep" className="bg-slate-100 p-3 shadow-md shadow-slate-500 mb-3 w-[220px]" />
                     </div>
                 </li>
 
                 {/*Line*/}
-                <li className='text-center'> <hr className='m-10 ml-80 mr-80 bg-gray-300 h-0.5' /> </li>
+                <li className='text-center'> <hr className='mx-auto w-3/4 my-20 bg-gray-300 h-0.5' /> </li>
 
                 <li>
-                    <div className="flex w-fit mx-auto items-center">
-                        <img src={Sea} alt="" className="mr-40 p-3 shadow-md shadow-slate-400 mb-3 w-60" />
-                        <div className='w-[1000px] h-[200px] shadow-md p-3 flex items-center justify-center'>
+                    <div className="mx-24 grid grid-cols-[30%_70%] items-center">
+                        <img src={Sea} alt="Sea" className="bg-slate-100 p-3 shadow-md shadow-slate-500 mb-3 w-[220px]" />
+                        <div className='bg-slate-100 w-full h-[200px] shadow-slate-500 shadow-md p-3 flex items-center justify-center'>
                             <p className='font-semibold'>"Don't worry, Don't Cry Drink Vodka and fly!"
-                                <h2 className='font-light mt-1 text-right'>- Nithimeth Mandee</h2>
+                                <h2 className='font-light text-right mt-1'>- Nithimeth Mandee -</h2>
                             </p>
                         </div>
                     </div>
@@ -105,11 +107,14 @@ export default function AboutUs() {
 
             </ul>
             <div className='w-fit mx-auto'>
+                {/* use this button to run external API but this is free version,
+                so it availables only 50 requests per month
+                don't press it too much!!! */}
                 <Button className='normal h-14 w-32 font-bold text-lg hover:bg-slate-200' value='Memes 😆' onclick={joke}></Button>
             </div>
             <div className='grid grid-cols-6 gap-10 m-10 mb-20'>
                 {memes.map(meme => (
-                    <img src={meme.image} alt="" className='w-[200px] h-[200px] hover:scale-150'/>
+                    <img src={meme.image} alt="" className='w-[200px] h-[200px] hover:scale-150' />
                 ))}
             </div>
 

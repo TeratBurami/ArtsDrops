@@ -68,7 +68,7 @@ export default function Gallery(this: any) {
     console.log(data.sort);
 
     const response = await fetch(
-      `http://localhost:3333/art?search=${data.search}&type=${data.type}&price=${price}&sort=${sorted}`
+      `http://localhost:3333/art?name=${data.search}&type=${data.type}&price=${price}&sort=${sorted}`
     );
     const art = await response.json();
     console.log(art);
@@ -112,7 +112,6 @@ export default function Gallery(this: any) {
         <div className="bg-[#F2F2F2] h-[600px] pb-10 sticky top-0 ">
           <div className="mx-auto w-2/3 my-7">
             <input
-              defaultValue={location.state? location.state:''}
               id="searchBar"
               onKeyUp={handleKeyPress.bind(this)}
               onChange={(newData) =>

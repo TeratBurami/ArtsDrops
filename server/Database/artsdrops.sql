@@ -27,18 +27,11 @@ CREATE TABLE Art(
     REFERENCES Artist(artist_id)
 );
 
--- use
 CREATE TABLE Payment(
     payment_id  char(5)         PRIMARY KEY,
     s_address   varchar(100)    NOT NULL,
     ptype       int             NOT NULL,
     totalprice  decimal(10,2)   NOT NULL
-);
-
-CREATE TABLE LoginSystem(
-    login_id    char(5)         PRIMARY KEY,
-    username    varchar(100)    NOT NULL,
-    password    varchar(100)    NOT NULL
 );
 
 CREATE TABLE Account(
@@ -51,51 +44,6 @@ CREATE TABLE Account(
     user_role       int
 );
 
-
-
--- CREATE TABLE User(
---     account_id  char(5)         PRIMARY KEY,
---     email       varchar(30),
---     DOB         date,
---     phone_no    char(10),
---     CONSTRAINT  fk_user     FOREIGN KEY (account_id)
---     REFERENCES  Account(account_id)
--- );
-
--- CREATE TABLE Role(
---     account_id  char(5)         PRIMARY KEY,
---     user_role       int,
---     CONSTRAINT  fk_admin    FOREIGN KEY (account_id)
---     REFERENCES 	Account(account_id)
--- );
-
-CREATE TABLE Input(
-    login_id    char(5)         NOT NULL,
-    account_id  char(5)         NOT NULL,
-    _date       date,
-    CONSTRAINT  fk_inlog    FOREIGN KEY (login_id)
-    REFERENCES  LoginSystem(login_id),
-    CONSTRAINT  fk_inac     FOREIGN KEY (account_id)
-    REFERENCES  Account(Account_id)            
-);
-
--- CREATE TABLE Manage(
---     admin_id    char(5)         NOT NULL,
---     account_id  char(5)         NOT NULL,
---     CONSTRAINT  fk_admanage    FOREIGN KEY (admin_id) 
---     REFERENCES  Admin(account_id),
---     CONSTRAINT  fk_accmanage  FOREIGN KEY (account_id)
---     REFERENCES  Account(account_id)
--- );
-
--- CREATE TABLE Edit(
---     admin_id    char(5)         NOT NULL,
---     prod_id     char(5)         NOT NULL,
---     CONSTRAINT  fk_adminE    FOREIGN KEY (admin_id)
---     REFERENCES  Admin(account_id),
---     CONSTRAINT  fk_prodE     FOREIGN KEY (prod_id)
---     REFERENCES  Art(art_id)
--- );
 
 CREATE TABLE Buy(
     account_id  char(5)         NOT NULL,

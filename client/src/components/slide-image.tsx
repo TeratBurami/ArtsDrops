@@ -1,8 +1,11 @@
+//image slide in the home page
+
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 
 export default function SlideShow() {
 
+    //set style of the slide
     const divStyle = {
         display: 'flex',
         alignItems: 'center',
@@ -12,6 +15,7 @@ export default function SlideShow() {
 
     }
 
+    //set the list of image
     const slideImages = [
         {
             url: 'https://i.pinimg.com/474x/29/bf/56/29bf566d57f8cff628f35c2715d9f299.jpg'

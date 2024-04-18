@@ -1,11 +1,16 @@
 import { useNavigate } from 'react-router-dom';
 import './button.css'
 
+
 interface Props {
   className?: string;
+  // value = showing message
   value: string;
+  // route for routing to some page
   route?: string;
+  //onclick() handle the click event
   onclick?:()=>void;
+  //hidden use for hide this element
   hidden?:boolean;
 }
 

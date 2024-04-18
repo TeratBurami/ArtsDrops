@@ -8,7 +8,6 @@ import User from '../../assets/images/user-solid.svg';
 import { useState } from 'react';
 import * as validator from 'email-validator';
 
-//validator.validate("test@email.com");
 
 interface Props {
     open: boolean;
@@ -16,8 +15,9 @@ interface Props {
     signupToLogin: () => void;
 }
 
-export default function SignUp({ open: open, close: close }: Props) {
+export default function SignUp({ open: open, close: close , signupToLogin:signupToLogin}: Props) {
 
+    //set the default data as a blank
     const [data,setData]=useState({
         username:'',
         password:'',
@@ -27,6 +27,7 @@ export default function SignUp({ open: open, close: close }: Props) {
         user_role:2
     })
 
+    //validate the input data
     const handleValidation=()=>{
         if(validator.validate(data.email) && data.tel.length==10 && data.username!=null && data.password!=null && data.DOB!=null){
             handleSubmit();
@@ -36,6 +37,8 @@ export default function SignUp({ open: open, close: close }: Props) {
         }
     }
 
+    //submit the form
+    //it will change the data to JSON, and add to the database
     const handleSubmit=()=>{
         console.log(data)
         fetch('http://localhost:3333/account',{
@@ -65,42 +68,26 @@ export default function SignUp({ open: open, close: close }: Props) {
                 <h1 className='text-center font-bold text-4xl text-[#545454]'>Sign Up</h1>
                 <div className='flex flex-rows w-fit ml-5 mt-5'>
                     <img src={User} alt="" className='w-[20px] mr-5 h-fit mt-2' />
-                    {/* <input type='text' className='ml-5 focus:outline-none text-xs w-[250px] shadow-[inset_0_0px_5px_0px_rgba(0,0,0,0.5)] pl-5 rounded-full border border-[#545454] h-8'></input> */}
                     <TextField onChangeCapture={(newData)=>setData({...data,username:newData.target.value})} id="outlined-basic" label="Username" variant="outlined" size='small' InputProps={{ sx: { borderRadius: 10, width: 280 } }} />
                 </div>
 
-                {/* <label className='ml-48 mt-5 mb-2 text-[#fe0000] text-xs font-semibold' htmlFor="">* Incorrect format or empty</label> */}
                 <div className='flex flex-rows w-fit h-fit ml-5 mt-5'>
-                    {/* <label clahtmlFor="">test</label> */}
                     <img src={Password} alt="" className='w-[20px] mr-5 h-fit my-auto' />
-                    {/* <input type='text' className='ml-5 focus:outline-none text-xs w-[250px] shadow-[inset_0_0px_5px_0px_rgba(0,0,0,0.5)] pl-5 rounded-full border border-[#545454] h-8'></input> */}
                     <TextField onChangeCapture={(newData)=>setData({...data,password:newData.target.value})} id="outlined-basic" label="Password" type='password' size='small' variant="outlined" InputProps={{ sx: { borderRadius: 10,width: 280 } }} />
                 </div>
                 <div className='flex flex-rows w-fit h-fit ml-5 mt-5'>
                     <img src={Email} alt="" className='w-[20px] mr-5 h-fit my-auto' />
-                    {/* <input type='text' className='ml-5 focus:outline-none text-xs w-[250px] shadow-[inset_0_0px_5px_0px_rgba(0,0,0,0.5)] pl-5 rounded-full border border-[#545454] h-8'></input> */}
                     <TextField onChangeCapture={(newData)=>setData({...data,email:newData.target.value})} id="outlined-basic" label="Email" variant="outlined" size='small'  InputProps={{ sx: { borderRadius: 10, width: 280 } }} />
                 </div>
                 <div className='flex flex-rows w-fit h-fit ml-5 mt-5 mb-2' hidden={true}>
                     <img src={Phone} alt="" className='w-[20px] mr-5 h-fit my-auto' />
-                    {/* <input type='text' className='ml-5 focus:outline-none text-xs w-[250px] shadow-[inset_0_0px_5px_0px_rgba(0,0,0,0.5)] pl-5 rounded-full border border-[#545454] h-8'></input> */}
                     <TextField onChangeCapture={(newData)=>setData({...data,tel:newData.target.value})} id="outlined-basic" label="Telephone" variant="outlined" size='small' InputProps={{ sx: { borderRadius: 10, width: 280 } }} />
                 </div>
                 <div className="w-fit ml-14 mt-2">
-                    {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DemoContainer components={['DatePicker']}>
-                            <DatePicker onChange={(data:string)=>handleDate(data)} label="Date of Birth" sx={{
-                                ".MuiInputBase-root": {
-                                    borderRadius: 50,
-                                    height: 55,
-                                    width: 280
-                                },
-                            }} />
-                        </DemoContainer>
-                    </LocalizationProvider> */}
                     <input onChange={(newData)=>setData({...data,DOB:newData.target.value})} id='datepicker' type="date" className='cursor-text focus:outline-blue-600 hover:border-black p-2 pl-3 mt-2 rounded-full border border-[1.3px] border-[#C4C4C4] text-slate-600' />
                 </div>
                 <Button onclick={handleValidation} className='font-semibold submit w-11/12 mx-auto mt-4 h-12' value='Sign Up'></Button>
+                <p onClick={signupToLogin} className='cursor-pointer text-center mt-3 underline underline-offset-4 text-slate-600 text-sm'>Already have an account?</p>
             </div>
         </Dialog>
     )

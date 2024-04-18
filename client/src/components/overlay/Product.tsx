@@ -21,6 +21,7 @@ interface Props{
 
 export default function Product({artist_name:artist_name,className:className,name:name,image:image,price:price,detail:detail,type:type,button:button=false,buttonValue:buttonValue=''}:Props) {
     
+    //state of showing the Product information pop-up page
     const [show, setShow] = useState(false);
     const openShow=()=>{
         setShow(true)
@@ -30,6 +31,7 @@ export default function Product({artist_name:artist_name,className:className,nam
     }
 
 
+    //state of showing the Buy pop-up page
     const [buy, setBuy] = useState(false);
     const showToBuy=()=>{
         setBuy(true)
@@ -39,7 +41,7 @@ export default function Product({artist_name:artist_name,className:className,nam
         setBuy(false)
     }
 
-
+    //state of showing the QR payment type pop-up page
     const [qr, setQR] = useState(false);
     const buyToQR=()=>{
         setQR(true)
@@ -49,40 +51,46 @@ export default function Product({artist_name:artist_name,className:className,nam
         setQR(false)
     }
 
-
+    //state of showing the Thank you pop-up page
     const [thank, setThank] = useState(false);
     const buyToThank=()=>{
         setThank(true)
         setBuy(false)
     }
 
+    //state of QR payment is succeed, then go to Thank you pop-up page
     const qrToThank=()=>{
       setThank(true)
       setQR(false)
     }
 
+    //state of change type of payment from QR payment to card payment
     const qrToBuy=()=>{
       setBuy(true)
       setQR(false)
     }
 
+    //close the Thank you page
     const closeThank=()=>{
         setThank(false)
     }
 
+    //currency formatter
     const formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'THB',
     });
 
-  //Artwork show
 
   return (
     <div>
         <div>
           <img src={image} alt={detail} className={className+' cursor-pointer'} hidden={button} onClick={openShow}/>
         </div>
+        {/* button of showing product page */}
         <Button value={buttonValue} className={className} onclick={openShow} hidden={!button}></Button>
+
+        {/* product information pop-up page */}
         <Dialog open={show} onClose={closeShow} PaperProps={{ sx: { borderRadius: "20px" } }}>
           <div className="w-[500px] h-[530px] grid grid-rows-[45%_55%] overflow-y-auto">
             <div className="relative">
@@ -105,6 +113,7 @@ export default function Product({artist_name:artist_name,className:className,nam
           </div>
         </Dialog>
 
+        {/* payment pop-up page */}
         <Dialog open={buy} onClose={closeBuy} PaperProps={{ sx: { borderRadius: "20px" } }}>
           <div className="w-[500px] h-[530px]">
             <div className="grid grid-cols-[43%_57%] gap-2 pt-6 px-16">
@@ -136,6 +145,7 @@ export default function Product({artist_name:artist_name,className:className,nam
           </div>
         </Dialog>
 
+        {/* qr payment pop-up page */}
         <Dialog open={qr} onClose={closeQR} PaperProps={{ sx: { borderRadius: "20px" } }}>
           <div className="w-[500px] h-[530px]">
           <div className="grid grid-cols-[43%_57%] gap-2 pt-6 px-16">
@@ -157,6 +167,7 @@ export default function Product({artist_name:artist_name,className:className,nam
           </div>
         </Dialog>
 
+        {/* Thank you pop-up page */}
         <Dialog open={thank} onClose={closeThank} PaperProps={{ sx: { borderRadius: "20px" } }}>
           <div className="w-[500px] h-[450px]">
             <img src={Success} className="scale-75 mx-auto mt-2" alt='success' />

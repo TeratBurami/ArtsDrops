@@ -1,14 +1,19 @@
 import Nav from "../../components/admin/nav";
-import Search from "../../components/search";
 import "./table.css";
 import { useEffect, useState } from "react";
 import EditProduct from "../../components/overlay/EditProduct";
 import AddProduct from "../../components/overlay/AddProduct";
 import Delete from '../../components/overlay/DeleteProduct';
+import SearchIcon from '../../assets/images/magnifying-glass-solid.svg'
 
-export default function ProdManage() {
+export default function ProdManage(this: any) {
+
+  //state of the data
   const [products, setProduct] = useState<any[]>([]);
+  //state of search data
+  const [search, setSearch] = useState('')
 
+  //get the data and set it to the state
   useEffect(() => {
     fetch("http://localhost:3333/art")
       .then((res) => res.json())
@@ -17,6 +22,23 @@ export default function ProdManage() {
       });
   }, []);
 
+  //get the data by the text in the search bar
+  const handleSubmit = () => {
+    fetch(`http://localhost:3333/art?admin_search=${search}`)
+      .then(res => res.json())
+      .then(
+        result => setProduct(result)
+      )
+  }
+
+  //handle press enter to search
+  const handleKeyPress = (e: { key: string }) => {
+    if (e.key === "Enter") {
+      handleSubmit();
+    }
+  };
+
+  //currency formatter
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "THB",
@@ -30,9 +52,9 @@ export default function ProdManage() {
         <h1 className="text-2xl font-semibold pb-4">Product Management</h1>
         <div className="rounded-full bg-slate-200 h-14 flex justify-between items-center">
           <AddProduct className="w-6 ml-6"></AddProduct>
-          {/* <img src={Cart} className='w-6 ml-10'></img> */}
-          <div className="mr-2">
-            <Search></Search>
+          <div className='hover:border-black rounded-full w-1/2 pl-3 h-3/4 p-2 flex border-[1.3px] border-[#C4C4C4] text-slate-600 focus-within:border-blue-600'>
+            <input onKeyUp={handleKeyPress.bind(this)} onChange={(newData) => setSearch(newData.target.value)} id='search' type="text" placeholder='Search...' className='pl-4 focus:outline-none bg-transparent w-full' />
+            <img onClick={handleSubmit} src={SearchIcon} alt="" className='cursor-pointer w-[15px]' />
           </div>
         </div>
         <table className="mt-10">
@@ -46,7 +68,6 @@ export default function ProdManage() {
             <th className="w-1/12">Delete</th>
           </tr>
           {
-            /*TESTER*/
             products.map((product) => (
               <tr>
                 <td>{product.art_id}</td>

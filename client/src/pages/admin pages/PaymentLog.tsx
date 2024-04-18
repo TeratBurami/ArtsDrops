@@ -1,32 +1,53 @@
 import { useEffect, useState } from 'react'
 import Nav from '../../components/admin/nav'
-import Search from '../../components/search'
 import './table.css'
+import SearchIcon from '../../assets/images/magnifying-glass-solid.svg'
 
-export default function PaymentLog(){
+export default function PaymentLog(this: any) {
 
+    //state of the data
     const [Payment, setPayment] = useState<any[]>([])
+    //state of search data
+    const [search, setSearch] = useState('')
 
-    useEffect( ()=> {
+    //get the data and set it to the state
+    useEffect(() => {
         fetch("http://localhost:3333/payment_log")
-        .then(res => res.json())
-        .then(
-            (result) => {
-                setPayment(result);
-            }
-        )
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setPayment(result);
+                }
+            )
     }, [])
 
+    //get the data by the text in the search bar
+    const handleSubmit = () => {
+        fetch(`http://localhost:3333/payment_log?search=${search}`)
+            .then(res => res.json())
+            .then(
+                result => setPayment(result)
+            )
+    }
 
-    return(
+    //handle press enter to search
+    const handleKeyPress = (e: { key: string }) => {
+        if (e.key === "Enter") {
+            handleSubmit();
+        }
+    };
+
+
+    return (
         <>
             <Nav></Nav>
 
             <div className='ml-[12rem] mr-6 p-10'>
-            <h1 className='font-semibold text-2xl pb-4'>Payment Log</h1>
+                <h1 className='font-semibold text-2xl pb-4'>Payment Log</h1>
                 <div className='rounded-full bg-slate-200 h-14 flex justify-end items-center'>
-                    <div className='mr-2'>
-                        <Search></Search>
+                    <div className='hover:border-black rounded-full w-1/2 pl-3 h-3/4 p-2 flex border-[1.3px] border-[#C4C4C4] text-slate-600 focus-within:border-blue-600'>
+                        <input onKeyUp={handleKeyPress.bind(this)} onChange={(newData) => setSearch(newData.target.value)} id='search' type="text" placeholder='Search...' className='pl-4 focus:outline-none bg-transparent w-full' />
+                        <img onClick={handleSubmit} src={SearchIcon} alt="" className='cursor-pointer w-[15px]' />
                     </div>
                 </div>
                 <table className='mt-10'>
@@ -40,7 +61,7 @@ export default function PaymentLog(){
                     </tr>
 
                     {
-                        Payment.map( payment =>
+                        Payment.map(payment =>
                             <tr>
                                 <td>{payment.art_id}</td>
                                 <td>{payment.art_name}</td>

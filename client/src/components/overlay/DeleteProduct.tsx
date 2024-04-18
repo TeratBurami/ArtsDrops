@@ -10,6 +10,7 @@ interface Props {
 
 export default function DeleteConfirm({ className: className,art_id:art_id}: Props) {
     
+    //state of showing the DeleteProduct comfirmation pop-up page
     const [show, setShow] = useState(false)
     const openShow = () => {
         setShow(true);
@@ -18,11 +19,13 @@ export default function DeleteConfirm({ className: className,art_id:art_id}: Pro
         setShow(false);
     }
 
+    //set art_id which use for delete
     const data={
         art_id:art_id
     }
 
 
+    //when press delete button, it will delete the product from the database
     const handleSubmit=()=>{
         fetch('http://localhost:3333/art',{
             method:'DELETE',

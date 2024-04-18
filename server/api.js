@@ -21,9 +21,21 @@ var connection = mysql.createConnection({
 connection.connect();
 
 
-//return all account
+//return account
 app.get('/account', (req, res) => {
-  connection.query('SELECT * FROM Account',
+  let sql='SELECT * FROM Account';
+  let id=req.query.id;
+  let search=req.query.search;
+  
+  id? sql+=` WHERE account_id LIKE \'${id}\'`:sql+=''
+  search? sql+=
+  ` WHERE account_id LIKE \'%${search}%\'
+  OR username LIKE \'%${search}%\'
+  OR phone_no LIKE \'%${search}%\'
+  OR email LIKE \'%${search}%\'
+  `:sql+='';
+
+  connection.query(sql,
   function (err, results, fields) {
     if (err) throw err;
     res.json(results);
@@ -32,15 +44,24 @@ app.get('/account', (req, res) => {
 
 //return payment log
 app.get('/payment_log', (req, res) => {
-  connection.query('SELECT * FROM Buy JOIN Art ON Buy.art_id = Art.art_id JOIN Account ON Buy.account_id = Account.account_id', function (err, results, fields) {
+  let sql='SELECT * FROM Buy JOIN Art ON Buy.art_id = Art.art_id JOIN Account ON Buy.account_id = Account.account_id';
+  let search=req.query.search;
+  search? sql+=` 
+  WHERE art_id LIKE \'%${search}%\'`
+  :sql+=''
+  console.log(sql)
+  connection.query(sql, function (err, results, fields) {
     if (err) throw err;
     res.json(results);
   })
 })
 
-//return all artist
+//return artist
 app.get("/artist", (req, res) => {
-  connection.query('SELECT * FROM Artist', function (error, results, fields) {
+  let sql='SELECT * FROM Artist';
+  let search=req.query.search;
+  search? sql+=` WHERE Artist.artist_name LIKE \'%${search}%\'`:sql+=''
+  connection.query(sql, function (error, results, fields) {
     if (error) throw error;
     res.json(results)
   });
@@ -51,26 +72,35 @@ app.get("/art", (req, res) => {
   var params = [];
   var sql = 'SELECT * FROM Art JOIN Artist ON Art.artist_id=Artist.artist_id';
   var type = req.query.type;
-  var search = req.query.search;
+  var name = req.query.name;
   var price = req.query.price;
   var sort = req.query.sort;
-  
-  if (search || type || price) {
+  var search=req.query.search;
+
+  search? sql+=` 
+  WHERE art_name LIKE \'%${search}%\'
+  OR type LIKE \'%${search}%\'
+  OR price<='${search}'
+  OR art_id LIKE \'%${search}%\'
+  OR artist_name LIKE \'%${search}%\'
+  `:sql+=''
+
+  if (name || type || price) {
     sql += ' WHERE'
   }
-  if (search) {
+  if (name) {
     sql += ' art_name LIKE ?';
-    params.push('%' + search + '%');
+    params.push('%' + name + '%');
   }
   if (type) {
-    if (search) {
+    if (name) {
       sql += ' AND';
     }
     sql += ' type LIKE ?'
     params.push(type);
   }
   if (price) {
-    if (search || type) {
+    if (name || type) {
       sql += ' AND';
     }
     sql += ' price <= ?';
@@ -83,8 +113,6 @@ app.get("/art", (req, res) => {
       sql += ` ORDER BY ${sort[0]} ${sort[1]}`
     }
   }
-
-
 
   connection.execute(sql, params, function (error, results, fields) {
     if (error) throw error;
@@ -150,9 +178,8 @@ app.post('/login', jsonParser, function (req, res, next) {
       }
       bcrypt.compare(req.body.password, users[0].password, function (err, isLogin) {
         if (isLogin) {
-          var TOKEN = jwt.sign({ email: users[0].email }, process.env.SECRET, { expiresIn: '4h' });
+          var TOKEN = jwt.sign({ id: users[0].account_id , user_role:users[0].user_role, username:users[0].username}, process.env.SECRET, { expiresIn: '4h' });
           res.json({ status: 'success', msg: "Login success", TOKEN })
-          console.log('success')
         }
         else {
           res.json({ status: 'incorrect', msg: "Incorrect" })
@@ -249,6 +276,7 @@ app.delete('/account', jsonParser, function (req, res, next) {
   )
 })
 
-app.listen(3333, () => {
-  console.log("Running on port 3333");
+//set listen
+app.listen(process.env.PORT, () => {
+  console.log(`Running on port ${process.env.PORT}`);
 })

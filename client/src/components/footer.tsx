@@ -1,3 +1,5 @@
+//the footer of the website
+
 import { Link } from "react-router-dom";
 import Facebook from '../assets/images/facebook.svg';
 import Pinterest from '../assets/images/square-pinterest.svg';
