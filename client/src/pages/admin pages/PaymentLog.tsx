@@ -16,6 +16,7 @@ export default function PaymentLog(this: any) {
             .then(res => res.json())
             .then(
                 (result) => {
+                    console.log(result);
                     setPayment(result);
                 }
             )
@@ -57,7 +58,7 @@ export default function PaymentLog(this: any) {
                         <th className='w-1/12'>CID</th>
                         <th className='w-2/12'>Transaction ID</th>
                         <th className='w-2/12'>Price</th>
-                        <th className='w-2/12'>Time</th>
+                        <th className='w-2/12'>Adress</th>
                     </tr>
 
                     {
@@ -68,7 +69,7 @@ export default function PaymentLog(this: any) {
                                 <td>{payment.account_id}</td>
                                 <td>{payment.paid_id}</td>
                                 <td>{payment.price} THB</td>
-                                <td>14/2/2024 18:08</td>
+                                <td>{payment.s_address}</td>
                             </tr>
                         )
                     }
