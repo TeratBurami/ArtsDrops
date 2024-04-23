@@ -124,7 +124,7 @@ export default function Home() {
       <div className="arttoyCon pt-10 pb-16 bg-[url('/src/assets/images/art_toy_bg.svg')]">
         <div className="imgCon pt-20 w-fit mx-auto"><img src={ArtToy} alt="" className=" mx-auto w-2/3 drop-shadow-[5px_20px_20px_rgba(0,0,0,0.4)]"/></div>
         <div className="textCon w-1/2 mx-auto mt-10 shadow-inner shadow-slate-600 p-5">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit minus nihil consequatur quidem excepturi, mollitia sed. Commodi rem, inventore suscipit nesciunt quas tempora eos in perferendis temporibus accusantium maxime voluptatibus.</p>
+            <p>Art toys, also called designer toys, are toys and collectibles created by artists and designers that are either self-produced or made by small, independent toy companies, typically in very limited editions</p>
         </div>
             <div className="buttonCon mx-auto w-fit mt-10"><Button route="art_toys" className="normal mx-auto w-96 hover:bg-slate-200" value="Explore"></Button></div>
       </div>

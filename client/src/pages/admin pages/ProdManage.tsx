@@ -24,11 +24,12 @@ export default function ProdManage(this: any) {
 
   //get the data by the text in the search bar
   const handleSubmit = () => {
-    fetch(`http://localhost:3333/art?admin_search=${search}`)
+    fetch(`http://localhost:3333/art?search=${search}`)
       .then(res => res.json())
       .then(
         result => setProduct(result)
       )
+      console.log(products)
   }
 
   //handle press enter to search
